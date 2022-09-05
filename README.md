@@ -70,7 +70,7 @@ This is an example of how to list things you need to use the software and how to
    ```
 5. Set up Sanity on web browser
    ```sh
-   visit <a href='https://www.sanity.io/docs/getting-started'>Sanity<a> complete the set up
+   visit https://www.sanity.io/docs/getting-started complete the set up
    ```
  
   <br/>
