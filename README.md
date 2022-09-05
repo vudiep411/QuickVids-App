@@ -15,7 +15,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<img src="quickvids1.png" alt="img">
+<img src="quickvids1.png" alt="img" height="600">
 
 <p>Visit the fully deployed project</p>
 <a href='https://quick-vids-app.vercel.app/'>Click here</a>
