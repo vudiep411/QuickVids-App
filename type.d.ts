@@ -30,6 +30,7 @@ export interface Video {
     }[];
     userId: string;
     topic: string;
+    date: string;
   }
   
   export interface IUser {

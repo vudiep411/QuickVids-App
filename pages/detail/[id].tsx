@@ -3,8 +3,9 @@ import { useRouter } from 'next/router';
 import { GoVerified } from 'react-icons/go';
 import Image from 'next/image';
 import Link from 'next/link';
-import { MdOutlineCancel } from 'react-icons/md';
+import { MdComment, MdOutlineCancel } from 'react-icons/md';
 import { BASE_URL } from '../../utils';
+import moment from 'moment'
 
 import axios from 'axios';
 import { Video } from '../../type';
@@ -81,18 +82,19 @@ const Detail = ({postDetails} : IProps) => {
             <Link href={`/profile/${post.postedBy._id}`}>
             <div className='flex gap-4 mb-4 bg-white w-full pl-10 cursor-pointer'>
               <Image
-                width={50}
-                height={50}
+                width={60}
+                height={60}
                 alt='user-profile'
                 className='rounded-full'
                 src={post.postedBy.image}
               />
               <div>
                 <div className='text-xl font-bold lowercase tracking-wider flex gap-2 items-center justify-center'>
-                  {post.postedBy.userName.replace(/\s+/g, '')}{' '}
+                  {post.postedBy.userName.replace(/\s+/g, '')}
                   <GoVerified className='text-blue-400 text-xl' />
                 </div>
-                <p className='text-md'> {post.postedBy.userName}</p>
+                {/* <p className='text-md'> {post.postedBy.userName}</p> */}
+                <p className='text-sm text-slate-400'>{moment(post.date).fromNow()}</p>
               </div>
             </div>
             </Link>

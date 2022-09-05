@@ -48,6 +48,11 @@ export default {
         title: 'Topic',
         type: 'string',
       },
+      {
+        title: 'Date',
+        name: 'date',
+        type: 'string',
+      }
     ],
   };
  

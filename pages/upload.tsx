@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { SanityAssetDocument } from '@sanity/client';
 import { useRouter } from 'next/router';
 import { FaCloudUploadAlt } from 'react-icons/fa';
-import { MdDelete } from 'react-icons/md';
-import axios from 'axios';
+import { ThreeDots } from 'react-loading-icons';
 
+import axios from 'axios';
 import useAuthStore from '../store/authStore';
 import { client } from '../utils/client';
 import { topics } from '../utils/constants';
@@ -28,6 +28,7 @@ const Upload = () => {
         const fileTypes = ['video/mp4', 'video/webm', 'video/ogg']
         
         if(fileTypes.includes(selectedFile.type)) {
+            setIsLoading(true)
             client.assets.upload('file', selectedFile, {
                 contentType: selectedFile.type,
                 filename: selectedFile.name
@@ -87,7 +88,10 @@ const Upload = () => {
                 </div>
                 <div className='border-dashed rounded-xl border-4 border-gray-200 flex flex-col justify-center items-center  outline-none mt-10 w-[260px] h-[458px] p-10 cursor-pointer hover:border-red-300 hover:bg-gray-100'>
                     {isLoading ? (
-                        <p>Uploading...</p>
+                        <div className='items-center flex flex-col'>
+                            <p className='font-bold'>Uploading...</p>
+                            <p className='mt-5'><ThreeDots fill='#FF1493' strokeWidth={2}/></p>
+                        </div>
                         ) : (
                         <div>
                             {videoAsset ? (

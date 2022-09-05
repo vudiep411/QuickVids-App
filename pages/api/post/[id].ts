@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { client } from '../../../utils/client'
-import { postDetailQuery } from '../../../utils/queries'
+import { postDetailQuery, singlePostquery } from '../../../utils/queries'
 import { uuid } from 'uuidv4'
 
 
@@ -16,7 +16,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     else if(req.method === 'PUT')
     {
       const { comment, userId } = req.body
-      const { id} : any = req.query
+      const { id } : any = req.query
       const data =  await client
             .patch(id)
             .setIfMissing({comments: []})
@@ -29,5 +29,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             ])
             .commit()
         res.status(200).json(data)
+    }
+    else if(req.method === 'DELETE')
+    {
+        const { id } : any = req.body
+
+        await client.delete(id)
+        .then(() => console.log('deleted'))
+        .catch((err) => console.log(err))
+
+        res.status(200).json({message: "success"})
     }
 }
