@@ -38,11 +38,12 @@ const Profile = ({ data }: IProps) => {
       } else {
         setVideosList(userLikedVideos);
       }
+      setNoOfFollowers(user.followers)
     };
     fetchVideos();
-  }, [showUserVideos, userLikedVideos, userVideos]);
+  }, [showUserVideos, userLikedVideos, userVideos, user, id]);
   
-  
+  // handle when click follow
   const handleFollow = async () => {
     const check = noOfFollowers.find((item: any) => item._ref === userProfile._id)
     let follow = true
@@ -60,6 +61,7 @@ const Profile = ({ data }: IProps) => {
     }
   }
 
+  // render follow button
   const FollowButton = () => {
     return !noOfFollowers.find((item: any) => item._ref === userProfile._id) ?
     (
