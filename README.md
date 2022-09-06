@@ -70,13 +70,13 @@ This is an example of how to list things you need to use the software and how to
    ```
 5. Set up Sanity on web browser
    ```sh
-   visit: https://www.sanity.io/docs/getting-startedto complete the set up
+   visit https://www.sanity.io/docs/getting-started complete the set up
    ```
  
   <br/>
 <p><b>Note:</b></p>
 <ul>
-<li>Sign up and get Sanity secret token to start</li> <br/>
+<li>Sign up and get Sanity secret token place it in a .env file to start with sanity</li> <br/>
 </ul>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
