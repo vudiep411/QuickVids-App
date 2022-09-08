@@ -18,6 +18,7 @@ const Upload = () => {
     const [topic, setTopic] = useState<string>('')
     const [savingPost, setSavingPost] = useState<Boolean>(false)
     const [missing, setMissing] = useState<string>()
+    const [file, setFile] = useState('')
 
     const { userProfile } : {userProfile: any}= useAuthStore()
     const router = useRouter()
@@ -39,6 +40,7 @@ const Upload = () => {
         } else {
             setIsLoading(false)
             setWrongFile(true)
+            setFile(selectedFile.type)
         }
     }
     
@@ -71,6 +73,7 @@ const Upload = () => {
             setMissing('Please fill out all fields !')
         }
     }
+
     const handleDiscard = () => {
         setVideoAsset(undefined)
         setWrongFile(false)
@@ -137,7 +140,7 @@ const Upload = () => {
                     )}
                 </div>
                 {wrongFile && (
-                    <p className='text-center text-xl text-red-400 font-semibold mt-4 w-[260px]'>File is invalid!!</p>
+                    <p className='text-center text-xl text-red-400 font-semibold mt-4 w-[260px]'>File is invalid!! {file}</p>
                 )}
             </div>
             { missing && 
