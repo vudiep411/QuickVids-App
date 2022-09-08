@@ -26,7 +26,7 @@ const Upload = () => {
     // handle video upload
     const uploadVideo = async (e: any) => {
         const selectedFile = e.target.files[0]
-        const fileTypes = ['video/mp4', 'video/webm', 'video/ogg', 'video/mov', 'video/m4v']
+        const fileTypes = ['video/mp4', 'video/webm', 'video/ogg', 'video/mov', 'video/quicktime']
         console.log(selectedFile.type)
         if(fileTypes.includes(selectedFile.type)) {
             setIsLoading(true)
@@ -83,13 +83,13 @@ const Upload = () => {
     }
   return (
     <div className='flex w-full h-full absolute left-0 top-[61px] mt-2 mb-10 pt-10 bg-gradient-to-r from-rose-100 to-teal-100 justify-center'>
-        <div className='bg-white rounded-lg xl:h-[80vh] md:h-[100vh] flex gap-6 flex-wrap justify-center items-center p-14 pt-6'>
+        <div className='lg:bg-white md:bg-white rounded-lg flex gap-6 flex-wrap justify-center items-center p-14 pt-6'>
             <div>
                 <div>
                     <p className='text-2xl font-bold'>Upload Video</p>
                     <p className='text-md text-gray-400 mt-1'>Post a Video</p>
                 </div>
-                <div className='border-dashed rounded-xl border-4 border-gray-200 flex flex-col justify-center items-center  outline-none mt-10 w-[260px] h-[458px] p-10 cursor-pointer hover:border-red-300 hover:bg-gray-100'>
+                <div className='border-dashed rounded-xl border-4 lg:border-gray-200 md:border-gray-200 border-[#94a3b8] flex flex-col justify-center items-center  outline-none mt-10 w-[260px] h-[458px] p-10 cursor-pointer hover:border-red-300 hover:bg-gray-100'>
                     {isLoading ? (
                         <div className='items-center flex flex-col'>
                             <p className='font-bold'>Uploading...</p>
