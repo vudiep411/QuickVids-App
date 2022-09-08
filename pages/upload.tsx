@@ -27,7 +27,7 @@ const Upload = () => {
     const uploadVideo = async (e: any) => {
         const selectedFile = e.target.files[0]
         const fileTypes = ['video/mp4', 'video/webm', 'video/ogg', 'video/mov', 'video/quicktime']
-        console.log(selectedFile.type)
+        
         if(fileTypes.includes(selectedFile.type)) {
             setIsLoading(true)
             client.assets.upload('file', selectedFile, {
