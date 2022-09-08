@@ -45,7 +45,7 @@ const Profile = ({ data }: IProps) => {
   
   // handle when click follow
   const handleFollow = async () => {
-    const check = noOfFollowers.find((item: any) => item._ref === userProfile._id)
+    const check = noOfFollowers?.find((item: any) => item._ref === userProfile._id)
     let follow = true
     if(check)
         follow = false
@@ -63,7 +63,7 @@ const Profile = ({ data }: IProps) => {
 
   // render follow button
   const FollowButton = () => {
-    return !noOfFollowers.find((item: any) => item._ref === userProfile._id) ?
+    return !noOfFollowers?.find((item: any) => item._ref === userProfile._id) ?
     (
     <button
       onClick={handleFollow} 
@@ -98,7 +98,7 @@ const Profile = ({ data }: IProps) => {
             <GoVerified className='text-blue-400 md:text-xl text-md mt-2' />
           </div>
           <p className='text-sm font-medium'> {user.userName}</p>
-          <p className='mt-3'><b>{noOfFollowers.length || 0}</b> Followers</p>
+          <p className='mt-3'><b>{noOfFollowers?.length || 0}</b> Followers</p>
           { (userProfile?._id !== id && userProfile) &&
             <FollowButton/>
           }
