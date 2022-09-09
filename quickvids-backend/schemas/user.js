@@ -14,6 +14,11 @@ export default {
             type: 'string'
         },
         {
+            name: 'name',
+            title: 'Name',
+            type: 'string'
+        },
+        {
             name: 'followers',
             title: 'Followers',
             type: 'array',

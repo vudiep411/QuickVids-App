@@ -37,6 +37,7 @@ export interface Video {
     _id: string;
     _type: string;
     userName: string;
+    name: string;
     image: string;
     followers: Array;
   }

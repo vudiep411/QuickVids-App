@@ -10,6 +10,7 @@ export const createOrGetUser = async (response: any, addUser: any) => {
         _id: sub,
         _type: 'user',
         userName: name,
+        name: name,
         image: picture
     }
 

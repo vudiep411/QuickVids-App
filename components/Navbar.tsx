@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { AiOutlineLogout, AiFillVideoCamera } from 'react-icons/ai'
 import { BiSearch } from 'react-icons/bi'
 import { RiVideoAddFill } from 'react-icons/ri'
-import { GoogleLogin, googleLogout } from '@react-oauth/google'
+import { GoogleLogin, googleLogout  } from '@react-oauth/google'
 import { createOrGetUser } from '../utils'
 import useAuthStore from '../store/authStore'
 
@@ -22,8 +22,10 @@ const Navbar = () => {
       setSearchValue('')
     }
   };
+
+
   return (
-    <div className='w-full flex justify-between items-center border-b-2 py-2 px-4 bg-black'>
+    <div className='w-full flex justify-between items-center border-b-2 py-2 px-4 bg-gradient-to-b from-gray-900 to-gray-600 bg-gradient-to-r'>
       <Link href="/">
         <div>
           <div className='w-[100px] md:w-[130px] hidden md:block cursor-pointer flex'>
@@ -111,10 +113,13 @@ const Navbar = () => {
           </button>
         </div>
         ) : (
-        <GoogleLogin
-          onSuccess={(response) => createOrGetUser(response, addUser)}
-          onError={() => {console.log('Error')}}
-        />
+          <div className=''>
+            <GoogleLogin
+              useOneTap
+              onSuccess={(response) => createOrGetUser(response, addUser)}
+              onError={() => {console.log('Error')}}
+            />
+          </div>
         )}
       </div>
     </div>

@@ -5,7 +5,7 @@ import { uuid } from 'uuidv4'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if(req.method === 'PUT') {
-        const { userId, followingID, follow } = req.body
+        const { userId, followingID, follow, userName, image } = req.body
 
         const data = follow ? await client
         .patch(followingID)

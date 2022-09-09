@@ -9,6 +9,7 @@ import { IUser, Video } from '../../type';
 import { BASE_URL } from '../../utils';
 import useAuthStore from '../../store/authStore'
 import { useRouter } from 'next/router';
+import Modal from '../../components/Modal'
 
 interface IProps {
   data: {
@@ -23,13 +24,14 @@ const Profile = ({ data }: IProps) => {
   const [videosList, setVideosList] = useState<Video[]>([]);  
   const { user, userVideos, userLikedVideos } = data;
   const [noOfFollowers, setNoOfFollowers] = useState(user.followers)
+  const [name, setName] = useState(user.name)
+  const [username, setUsername] = useState(user.name)
 
   const videos = showUserVideos ? 'border-b-2 border-black' : 'text-gray-400';
   const liked = !showUserVideos ? 'border-b-2 border-black' : 'text-gray-400';
   const router = useRouter()
   const { userProfile } : {userProfile: any}= useAuthStore()
   const { id } : any = router.query
-  
   
   useEffect(() => {
     const fetchVideos = async () => {
@@ -94,15 +96,20 @@ const Profile = ({ data }: IProps) => {
         </div>
         <div>
           <div className='text-md text-2xl font-bold tracking-wider flex gap-2 items-center justify-center lowercase'>
-            <span>{user.userName.replace(/\s+/g, '')} </span>
+            <span>{username.replace(/\s+/g, '')} </span>
             <GoVerified className='text-blue-400 md:text-xl text-md mt-2' />
           </div>
-          <p className='text-sm font-medium'> {user.userName}</p>
+          <p className='text-sm font-medium'> {name}</p>
           <p className='mt-3'><b>{noOfFollowers?.length || 0}</b> Followers</p>
           { (userProfile?._id !== id && userProfile) &&
             <FollowButton/>
           }
         </div>
+        {userProfile?._id === id &&
+          <div>
+        <Modal name={name} username={username} setName={setName} setUsername={setUsername}/>
+          </div>
+        }
       </div>
       <div className='flex gap-10 mb-10 mt-10 border-b-2 border-gray-200 w-full'>
           <p className={`text-xl font-semibold cursor-pointer ${videos} mt-2`} onClick={() => setShowUserVideos(true)}>
