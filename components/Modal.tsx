@@ -104,7 +104,9 @@ const Modal = ({name, username, setName, setUsername, image, setImage, id} : any
                       />
                   </div>
                   <div className=''>
-                    <img 
+                    <Image
+                      width={100}
+                      height={100} 
                       className='rounded-full h-32 w-32 object-scale-down bg-black'
                       src={newImg}
                     />
