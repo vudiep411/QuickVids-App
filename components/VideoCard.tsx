@@ -34,7 +34,9 @@ const handleDelete = async () => {
             <div className='md:w-16 md:h-16 w-10 h-10 cursor-pointer'>
                 <Link href={`/profile/${post.postedBy._id}`}>
                     <div className='mt-2'>
-                        <img
+                        <Image
+                            width={60}
+                            height={60}
                             className='rounded-full w-10 h-10 md:w-16 md:h-16 object-scale-down bg-black'
                             src={post.postedBy?.image}
                             alt='profile photo'

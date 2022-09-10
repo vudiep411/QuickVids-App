@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { GoVerified } from 'react-icons/go';
 import axios from 'axios';
+import Image from 'next/image';
 
 import VideoCard from '../../components/VideoCard';
 import NoResults from '../../components/NoResults';
@@ -87,11 +88,11 @@ const Profile = ({ data }: IProps) => {
 
   return (
     <div className='w-full'>
-      <div className='flex gap-6 md:gap-10 mb-4 w-full'>
+      <div className='flex gap-6 md:gap-5 mb-4 w-full'>
         <div className='w-16 h-16 md:w-32 md:h-32'>
-          <img
-              width={60}
-              height={60}
+          <Image
+              width={100}
+              height={100}
               className='rounded-full w-16 h-16 md:w-32 md:h-32 object-scale-down bg-black'
               src={image}
               alt='user-profile'
