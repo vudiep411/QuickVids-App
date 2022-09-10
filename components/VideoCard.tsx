@@ -3,8 +3,6 @@ import { NextPage } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { GoVerified } from 'react-icons/go';
-import avatar from '../styles/images/avatar.jpg'
-import { HiDotsHorizontal } from 'react-icons/hi'
 import moment from 'moment';
 import Popup from './Popup';
 
@@ -36,13 +34,10 @@ const handleDelete = async () => {
             <div className='md:w-16 md:h-16 w-10 h-10 cursor-pointer'>
                 <Link href={`/profile/${post.postedBy._id}`}>
                     <div className='mt-2'>
-                        <Image
-                            width={60}
-                            height={60}
-                            className='rounded-full'
-                            src={post.postedBy?.image || avatar}
+                        <img
+                            className='rounded-full w-10 h-10 md:w-16 md:h-16 object-scale-down bg-black'
+                            src={post.postedBy?.image}
                             alt='profile photo'
-                            layout='responsive'
                         />
                     </div>
                 </Link>

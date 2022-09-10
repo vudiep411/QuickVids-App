@@ -33,11 +33,10 @@ const SuggestedAccounts: NextPage<IProps> = () => {
                 <Image
                   width={34}
                   height={34}
-                  className='rounded-full'
+                  className='rounded-full w-8 h-8 object-scale-down bg-black'
                   src={user.image}
                   alt='user-profile'
-                  layout='responsive'
-                />
+                  />
               </div>
 
               <div className='hidden xl:block'>

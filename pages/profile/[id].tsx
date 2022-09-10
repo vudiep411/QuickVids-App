@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import Image from 'next/image';
 import { GoVerified } from 'react-icons/go';
 import axios from 'axios';
 
@@ -90,11 +89,10 @@ const Profile = ({ data }: IProps) => {
     <div className='w-full'>
       <div className='flex gap-6 md:gap-10 mb-4 w-full'>
         <div className='w-16 h-16 md:w-32 md:h-32'>
-          <Image
-              width={120}
-              height={120}
-              layout='responsive'
-              className='rounded-full'
+          <img
+              width={60}
+              height={60}
+              className='rounded-full w-16 h-16 md:w-32 md:h-32 object-scale-down bg-black'
               src={image}
               alt='user-profile'
             />
