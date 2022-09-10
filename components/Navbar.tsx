@@ -104,7 +104,9 @@ const Navbar = () => {
           {userProfile.image && (
             <Link href={`/profile/${userProfile._id}`}>        
               <div className={`${transition}`}>
-                <img
+                <Image
+                  width={40}
+                  height={40}
                   className='rounded-full h-10 w-10 object-scale-down bg-black cursor-pointer'
                   src={image}
                   alt='profile photo'
