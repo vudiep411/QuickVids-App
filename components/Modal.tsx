@@ -1,15 +1,50 @@
-import React, {useState} from 'react'
+import React, { useState, useEffect } from 'react'
 import { AiFillEdit } from 'react-icons/ai'
+import axios from 'axios';
+import { BASE_URL } from '../utils';
+import { client } from '../utils/client';
 
-const Modal = ({name, username, setName, setUsername} : any) => {
+
+const Modal = ({name, username, setName, setUsername, image, setImage, id} : any) => {
     const [showModal, setShowModal] = useState(false);
-    const [newName, setNewName] = useState('')
-    const [newUsername, setNewUsername] = useState('')
+    const [newName, setNewName] = useState(name)
+    const [newUsername, setNewUsername] = useState(username)
+    const [newImg, setNewImg] = useState<any>(image)
+
+    useEffect(() => {
+      setNewName(name)
+      setNewUsername(username)
+      setNewImg(image)
+    }, [name, username, image])
+    
+    const handleUploadImage = async (e : any) => {
+      const selectedFile = e.target.files[0]
+      client.assets.upload('image', selectedFile, {
+        contentType: selectedFile.type,
+        filename: selectedFile.name
+      }).then((data) => {
+        setNewImg(data.url)
+      })
+
+    }
 
     const handleSubmit = () => {
+      setShowModal(false)
       setName(newName)
       setUsername(newUsername)
+      setImage(newImg)
+      
+      axios.put(`${BASE_URL}/api/users`, {
+        id: id,
+        username: newUsername,
+        name: newName,
+        image: newImg
+      })
+    }
+
+    const handleClose = () => {
       setShowModal(false)
+      setNewImg(image)
     }
   return (
   <>
@@ -59,6 +94,22 @@ const Modal = ({name, username, setName, setUsername} : any) => {
                         />
                       <label className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Name</label>
                   </div>
+                  <div className="relative z-0 mb-6 w-full group">
+                    <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Upload profile Image</label>
+                    <input 
+                      className="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" 
+                      type="file"
+                      accept="image/*"
+                      onChange={handleUploadImage}
+                      />
+                  </div>
+                  <div>
+                    <img 
+                      width={100}
+                      height={100}
+                      src={newImg}
+                    />
+                  </div>
                 </div>
               </form>
               </div>
@@ -67,7 +118,7 @@ const Modal = ({name, username, setName, setUsername} : any) => {
                 <button
                   className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                   type="button"
-                  onClick={() => setShowModal(false)}
+                  onClick={handleClose}
                 >
                   Close
                 </button>

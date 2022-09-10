@@ -6,6 +6,7 @@ import { GoVerified } from 'react-icons/go';
 import avatar from '../styles/images/avatar.jpg'
 import { HiDotsHorizontal } from 'react-icons/hi'
 import moment from 'moment';
+import Popup from './Popup';
 
 import axios from 'axios';
 import { useRouter } from 'next/router';
@@ -20,33 +21,14 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
 
     const videoRef = useRef<HTMLVideoElement>(null)
     const { userProfile } :any = useAuthStore()
-    const [showDropdown, setShowDropdown] = useState(false)
     const router = useRouter()
 
-    const handleDropdown = () => {
-        if(showDropdown)
-            setShowDropdown(false)
-        else
-            setShowDropdown(true)
-    }
+
 const handleDelete = async () => {
     await axios.delete(`${BASE_URL}/api/post/delete`, {data: {id: post._id}})
     router.reload()
 }
-const Dropdown = () => {
-return (
-    <div className="absolute z-10 w-35 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700">
-        <ul className="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDefault">
-        <li>
-            <p onClick={handleDelete} className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer">Delete</p>
-        </li>
-        {/* <li>
-            <a className="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Update</a>
-        </li> */}
-        </ul>
-    </div>
-)
-}
+
 
   return (
     <div className='flex flex-col pb-6'>
@@ -66,19 +48,20 @@ return (
                 </Link>
             </div>
             <div className='mt-2 '>
-                <div className='flex gap-2'>
-                    <Link href={`/profile/${post.postedBy._id}`}>
-                        <div className='items-center gap-2'>
-                            <p className='flex gap-2 items-center md:text-md font-bold text-primary cursor-pointer'>
-                                {post.postedBy.userName}
-                                <GoVerified className='text-blue-400 text-md'/>
-                            </p>
-                        </div>
-                    </Link>
+                <div className='flex gap-6'>
+                    <div className='flex gap-2'>
+                        <Link href={`/profile/${post.postedBy._id}`}>
+                            <div className='items-center gap-2'>
+                                <p className='flex gap-2 items-center md:text-md font-bold text-primary cursor-pointer'>
+                                    {post.postedBy.userName}
+                                    <GoVerified className='text-blue-400 text-md'/>
+                                </p>
+                            </div>
+                        </Link>
+                    </div>
                     { (userProfile && userProfile._id === post.postedBy._id) &&
-                    <div className='ml-6' onClick={handleDropdown}>
-                        <HiDotsHorizontal className='text-xl cursor-pointer mt-1'/>
-                        {showDropdown && <Dropdown/>}
+                    <div className=''>
+                        <Popup handleDelete={handleDelete}/>
                     </div>
                     }
                 </div>

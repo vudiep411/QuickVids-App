@@ -12,4 +12,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             res.status(200).json([])
 
     }
+    else if(req.method === 'PUT'){
+        const {id, name, username, image} = req.body
+        await client
+        .patch(id)
+        .set({name: name, userName: username, image: image})
+        .commit()
+        res.status(200).json({message: 'success'})
+    }
 }

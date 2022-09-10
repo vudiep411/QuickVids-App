@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -8,10 +8,14 @@ import { RiVideoAddFill } from 'react-icons/ri'
 import { GoogleLogin, googleLogout  } from '@react-oauth/google'
 import { createOrGetUser } from '../utils'
 import useAuthStore from '../store/authStore'
+import axios from 'axios'
+import { BASE_URL } from '../utils'
 
 const Navbar = () => {
   const {userProfile, addUser, removeUser} : any = useAuthStore()
   const [searchValue, setSearchValue] = useState('');
+  const [image, setImage] = useState<any>()
+
   const router = useRouter();
   const transition = 'transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110'
   const handleSearch = (e: { preventDefault: () => void }) => {
@@ -23,6 +27,17 @@ const Navbar = () => {
     }
   };
 
+  useEffect(() => {
+    const fetchUser = async () => {
+      if(userProfile)
+      {
+        const { data } = await axios.get(`${BASE_URL}/api/user/${userProfile._id}`)
+        setImage(data.image)
+      }
+    }
+    fetchUser()
+  }, [userProfile])
+  
 
   return (
     <div className='w-full flex justify-between items-center border-b-2 py-2 px-4 bg-gradient-to-b from-gray-900 to-gray-600 bg-gradient-to-r'>
@@ -93,7 +108,7 @@ const Navbar = () => {
                 width={40}
                 height={40}
                 className='rounded-full cursor-pointer'
-                src={userProfile.image}
+                src={image}
                 alt='profile photo'
               />
             </div>      
@@ -107,6 +122,7 @@ const Navbar = () => {
             onClick={() => {
               googleLogout()
               removeUser()
+              router.push('/')
             }}
           >
             <AiOutlineLogout color='red' fontSize={22}/>

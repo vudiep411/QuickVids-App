@@ -23,9 +23,11 @@ const Profile = ({ data }: IProps) => {
   const [showUserVideos, setShowUserVideos] = useState<Boolean>(true);
   const [videosList, setVideosList] = useState<Video[]>([]);  
   const { user, userVideos, userLikedVideos } = data;
+
   const [noOfFollowers, setNoOfFollowers] = useState(user.followers)
   const [name, setName] = useState(user.name)
-  const [username, setUsername] = useState(user.name)
+  const [username, setUsername] = useState(user.userName)
+  const [image, setImage] = useState(user.image)
 
   const videos = showUserVideos ? 'border-b-2 border-black' : 'text-gray-400';
   const liked = !showUserVideos ? 'border-b-2 border-black' : 'text-gray-400';
@@ -41,6 +43,9 @@ const Profile = ({ data }: IProps) => {
         setVideosList(userLikedVideos);
       }
       setNoOfFollowers(user.followers)
+      setUsername(user.userName)
+      setName(user.name)
+      setImage(user.image)
     };
     fetchVideos();
   }, [showUserVideos, userLikedVideos, userVideos, user, id]);
@@ -90,7 +95,7 @@ const Profile = ({ data }: IProps) => {
               height={120}
               layout='responsive'
               className='rounded-full'
-              src={user.image}
+              src={image}
               alt='user-profile'
             />
         </div>
@@ -107,7 +112,7 @@ const Profile = ({ data }: IProps) => {
         </div>
         {userProfile?._id === id &&
           <div>
-        <Modal name={name} username={username} setName={setName} setUsername={setUsername}/>
+        <Modal name={name} username={username} setName={setName} setUsername={setUsername} image={image} setImage={setImage} id={id}/>
           </div>
         }
       </div>
