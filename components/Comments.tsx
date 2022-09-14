@@ -41,7 +41,7 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment 
                             <Image
                               width={48}
                               height={48}
-                              className='rounded-full cursor-pointer'
+                              className='rounded-full h-32 w-32 object-scale-down bg-black'
                               src={user.image}
                               alt='user-profile'
                               layout='responsive'

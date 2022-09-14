@@ -6,6 +6,7 @@ import { GoVerified } from 'react-icons/go';
 
 import { IUser } from '../type';
 import useAuthStore from '../store/authStore';
+import { shuffleArray } from '../utils/shuffle'
 
 interface IProps {
   // fetchAllUsers: () => void;
@@ -14,11 +15,13 @@ interface IProps {
 
 const SuggestedAccounts: NextPage<IProps> = () => {
   const { fetchAllUsers, allUsers } = useAuthStore()
-
+  
   useEffect(() => {
     fetchAllUsers();
+
   }, [fetchAllUsers])
 
+  const shuffleUsers = shuffleArray(allUsers)
 
   return (
     <div className='xl:border-b-2 border-white pb-4'>
@@ -26,7 +29,7 @@ const SuggestedAccounts: NextPage<IProps> = () => {
         Suggested Accounts
       </p>
       <div>
-        {allUsers?.slice(0, 6).map((user: IUser) => (
+        {shuffleUsers?.slice(0, 6).map((user: IUser) => (
           <Link href={`/profile/${user._id}`} key={user._id}>
             <div className='flex gap-3 hover:bg-primary p-2 cursor-pointer font-semibold rounded'>
               <div className='w-8 h-8'>
