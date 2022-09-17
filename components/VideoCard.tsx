@@ -49,7 +49,7 @@ const handleDelete = async () => {
                     <div className='flex gap-2'>
                         <Link href={`/profile/${post.postedBy._id}`}>
                             <div className='items-center gap-2'>
-                                <p className='flex gap-2 items-center md:text-md font-bold text-primary cursor-pointer'>
+                                <p className='flex gap-2 items-center md:text-md font-bold text-[rgb(232,232,232)] cursor-pointer'>
                                     {post.postedBy.userName}
                                     <GoVerified className='text-blue-400 text-md'/>
                                 </p>
@@ -70,8 +70,8 @@ const handleDelete = async () => {
                 <Link href={`/detail/${post._id}`}>
                     <div>
                         <div className='mb-5'>
-                            <p><b>{post.caption}</b></p>
-                            <p className=' text-sm'>#{post.topic}</p>
+                            <p className='text-[rgb(232,232,232)]'><b>{post.caption}</b></p>
+                            <p className='text-sm text-slate-400'>#{post.topic}</p>
                         </div>
                         <video
                             controls

@@ -29,8 +29,8 @@ const Profile = ({ data }: IProps) => {
   const [username, setUsername] = useState(user.userName)
   const [image, setImage] = useState(user.image)
 
-  const videos = showUserVideos ? 'border-b-2 border-black' : 'text-gray-400';
-  const liked = !showUserVideos ? 'border-b-2 border-black' : 'text-gray-400';
+  const videos = showUserVideos ? 'border-b-2 border-black text-white' : 'text-gray-500';
+  const liked = !showUserVideos ? 'border-b-2 border-black text-white':  'text-gray-500';
   const router = useRouter()
   const { userProfile } : {userProfile: any}= useAuthStore()
   const { id } : any = router.query
@@ -74,13 +74,13 @@ const Profile = ({ data }: IProps) => {
     (
     <button
       onClick={handleFollow} 
-      className="mt-2 w-[100px] bg-blue-500 text-white font-bold text-xs px-4 py-2 rounded shadow-lg hover:shadow-md outline-none focus:outline-none mr-1 mb-1" type="button">
+      className="mt-2 w-[100px] bg-blue-500 text-[rgb(232,232,232)] font-bold text-xs px-4 py-2 rounded shadow-lg hover:shadow-md outline-none focus:outline-none mr-1 mb-1" type="button">
       Follow
     </button>
-    ) : (
+    ) : ( 
       <button
       onClick={handleFollow} 
-      className="mt-2 w-[100px] bg-[#cffafe] text-black font-bold text-xs border-1 border-black px-4 py-2 rounded shadow-lg hover:shadow-md mr-1 mb-1" type="button">
+      className="mt-2 w-[100px] bg-[rgb(64,64,64)] hover:bg-[rgb(72,72,72)] text-[rgb(232,232,232)] font-bold text-xs border-1 border-black px-4 py-2 rounded shadow-lg hover:shadow-md mr-1 mb-1" type="button">
       Unfollow
     </button>      
     )
@@ -99,12 +99,12 @@ const Profile = ({ data }: IProps) => {
             />
         </div>
         <div>
-          <div className='text-md text-2xl font-bold tracking-wider flex gap-2 items-center justify-center lowercase'>
+          <div className='text-md text-2xl font-bold tracking-wider flex gap-2 items-center justify-center lowercase text-[rgb(232,232,232)]'>
             <span>{username.replace(/\s+/g, '')} </span>
             <GoVerified className='text-blue-400 md:text-xl text-md mt-2' />
           </div>
-          <p className='text-sm font-medium'> {name}</p>
-          <p className='mt-3'><b>{noOfFollowers?.length || 0}</b> Followers</p>
+          <p className='text-sm font-medium text-[rgb(232,232,232)]'> {name}</p>
+          <p className='mt-3 text-[rgb(232,232,232)]'><b>{noOfFollowers?.length || 0}</b> Followers</p>
           { (userProfile?._id !== id && userProfile) &&
             <FollowButton/>
           }
@@ -115,7 +115,7 @@ const Profile = ({ data }: IProps) => {
           </div>
         }
       </div>
-      <div className='flex gap-10 mb-10 mt-10 border-b-2 border-gray-200 w-full'>
+      <div className='flex gap-10 mb-10 mt-10 border-b-2 border-gray-400 w-full'>
           <p className={`text-xl font-semibold cursor-pointer ${videos} mt-2`} onClick={() => setShowUserVideos(true)}>
             Videos
           </p>

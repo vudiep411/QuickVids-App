@@ -36,7 +36,7 @@ const LikeButton: NextPage<IProps> = ({handleLike, handleDislike, likes}) => {
             <AiTwotoneFire className='text-lg md:text-2xl' />
           </div>
         )}
-        <p className='text-md font-semibold '>{likes?.length || 0}</p>
+        <p className='text-md font-semibold text-[rgb(232,232,232)]'>{likes?.length || 0}</p>
       </div>
     </div>
   )

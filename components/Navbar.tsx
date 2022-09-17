@@ -40,13 +40,13 @@ const Navbar = () => {
   
 
   return (
-    <div className='w-full flex justify-between items-center border-b-2 py-2 px-4 bg-gradient-to-b from-gray-900 to-gray-600 bg-gradient-to-r'>
+    <div className='w-full flex justify-between items-center bg- py-2 px-4'>
       <Link href="/">
         <div>
           <div className='w-[100px] md:w-[130px] hidden md:block cursor-pointer flex'>
-            <h1 className='font-extrabold text-transparent text-2xl bg-clip-text bg-white hover:bg-[#d4d4d8]'><b>QuickVids</b></h1>
+            <h1 className='font-extrabold text-transparent text-2xl bg-clip-text bg-[rgb(232,232,232)] hover:bg-[#d4d4d8]'><b>QuickVids</b></h1>
           </div>
-          <div className='md:hidden font-bold text-2xl text-pink-600'>
+          <div className='md:hidden font-bold text-2xl text-white'>
             <AiFillVideoCamera/>
           </div>
         </div>
@@ -97,7 +97,7 @@ const Navbar = () => {
         <div className='flex gap-5 md:gap-10 mt-1'>
           <Link href='/upload'>
             <button className='px-2'>
-              <RiVideoAddFill className={`text-3xl text-pink-600 ${transition}`}/>
+              <RiVideoAddFill className={`text-3xl text-white ${transition}`}/>
             </button>
           </Link>
           {/* render profile image */}

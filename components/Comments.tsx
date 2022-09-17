@@ -26,8 +26,8 @@ interface IComment {
 const Comments = ({ comment, setComment, addComment, comments, isPostingComment } : IProps) => {
   const { userProfile, allUsers } = useAuthStore()
   return (
-    <div className='border-t-2 border-gray-200 pt-4 px-10 mt-4 bg-[#F8F8F8] border-b-2 lg:pb-0 pb-[100px]'>
-      <div className='overflow-scroll lg:h-[457px]'>
+    <div className='border-t-2 border-gray-600 pt-4 px-10 mt-4 border-b-2 lg:pb-0 pb-[100px] bg-[rgb(32,32,32)]'>
+      <div className='lg:h-[457px] lg:overflow-scroll'>
         {comments?.length > 0 ? (
           comments?.map((item: IComment, idx: number) => (
             <div key={idx}>
@@ -48,14 +48,14 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment 
                             />
                           </div>
 
-                          <p className='flex cursor-pointer gap-1 items-center text-[18px] font-bold leading-6 text-primary'>
+                          <p className='flex cursor-pointer gap-1 items-center text-[18px] font-bold leading-6 text-[rgb(232,232,232)]'>
                             {user.userName}{' '}
                             <GoVerified className='text-blue-400' />
                           </p>
                         </div>
                       </Link>
                       <div>
-                        <p className='-mt-5 ml-16 text-[16px] mr-8'>
+                        <p className='-mt-5 ml-16 text-[16px] mr-8 text-[rgb(232,232,232)]'>
                           {item.comment}
                         </p>
                       </div>
@@ -80,7 +80,7 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment 
               className='bg-primary px-6 py-4 text-md font-medium border-2 w-[250px] md:w-[700px] lg:w-[350px] border-gray-100 focus:outline-none focus:border-2 focus:border-gray-300 flex-1 rounded-lg'
               placeholder='Add comment..'
             />
-            <button className='text-md text-gray-400 ' onClick={addComment}>
+            <button className='text-md text-gray-300 hover:text-gray-600' onClick={addComment}>
               {isPostingComment ? 'Commenting...' : 'Comment'}
             </button>
           </form>

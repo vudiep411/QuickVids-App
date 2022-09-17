@@ -7,14 +7,14 @@ import { topics } from '../utils/constants';
 
 
 const Discover: NextPage= ()  => {
-    const activeTopicStyle = 'xl:border-2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gradient-to-r from-pink-400 to-pink-600 xl:border-[#db2777] px-3 py-2 rounded xl:rounded-full flex items-center gap-2 justify-center cursor-pointer bg-gradient-to-r from-pink-400 to-pink-600 text-white';
-    const topicStyle = 'xl:border-2 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-gradient-to-r from-pink-400 to-pink-600 xl:border-gray-300 px-3 py-2 rounded xl:rounded-full flex items-center gap-2 justify-center cursor-pointer text-black';    
+    const activeTopicStyle = 'transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-[rgb(80,80,80)] xl:border-[#db2777] px-3 py-2 rounded xl:rounded-full flex items-center gap-2 justify-center cursor-pointer bg-[rgb(80,80,80)] text-white';
+    const topicStyle = 'transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 hover:bg-[rgb(80,80,80)] xl:border-gray-300 px-3 py-2 rounded xl:rounded-full flex items-center gap-2 justify-center cursor-pointer text-[rgb(232,232,232)]';    
     const router = useRouter()
     const { topic } = router.query;
 
   return (
-    <div className='xl:border-b-2 xl:white pb-6'>
-        <p className='text-gray-500 font-semibold m-3 mt-4 hidden xl:block'>
+    <div className='xl:border-b-2 xl:gray-400 pb-6'>
+        <p className='text-gray-300 font-semibold m-3 mt-4 hidden xl:block'>
             Popular Topics
         </p>
         <div className='flex gap-3 flex-wrap'>
