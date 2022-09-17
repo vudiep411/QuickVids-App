@@ -35,17 +35,22 @@ const Search = ({ videos } : {videos: Video[]}) => {
           {searchedAccounts.length > 0 ? (
             searchedAccounts.map((user: IUser, idx: number) => (
               <Link key={idx} href={`/profile/${user._id}`}>
-                <div className=' flex gap-3 p-2 cursor-pointer font-semibold rounded border-b-2 border-gray-200'>
+                <div className=' flex gap-3 p-2 cursor-pointer font-semibold rounded border-b-2 border-gray-600'>
                   <div>
-                    <Image width={50} height={50} className='rounded-full' alt='user-profile' src={user.image}/>
+                    <Image 
+                      width={50} 
+                      height={50} 
+                      className='rounded-full h-10 w-10 object-scale-down bg-black cursor-pointer' 
+                      alt='user-profile' 
+                      src={user.image}/>
                   </div>
                   <div>
                     <div>
-                      <p className='flex gap-1 items-center text-lg font-bold text-primary'>
+                      <p className='flex gap-1 items-center text-lg text-[rgb(232,232,232)] font-bold'>
                         {user.userName} <GoVerified className='text-blue-400' />
                       </p>
                       <p className='capitalize text-gray-400 text-sm'>
-                        {user.userName}
+                        {user.name}
                       </p>
                     </div>
                   </div>

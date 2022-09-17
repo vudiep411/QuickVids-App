@@ -96,14 +96,14 @@ const Navbar = () => {
         {userProfile ? (
         <div className='flex gap-5 md:gap-10 mt-1'>
           <Link href='/upload'>
-            <button className='px-2'>
+            <button className='ml-[5px]'>
               <RiVideoAddFill className={`text-3xl text-white ${transition}`}/>
             </button>
           </Link>
           {/* render profile image */}
           {userProfile.image && (
             <Link href={`/profile/${userProfile._id}`}>        
-              <div className={`${transition} w-[40px]`}>
+              <div className={`${transition} w-[35px] md:w-[40px]`}>
                 <Image
                   width={40}
                   height={40}
@@ -118,7 +118,7 @@ const Navbar = () => {
           {/* logout */}
           <button
             type='button'
-            className={`px-2 ${transition}`}
+            className={`mr-[5px] ${transition}`}
             onClick={() => {
               googleLogout()
               removeUser()
