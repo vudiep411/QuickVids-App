@@ -65,22 +65,24 @@ const handleDelete = async () => {
                 <p className='text-slate-400 text-sm mb-2'>{moment(post.date).fromNow()}</p>
             </div>
         </div>
-        <div className='lg:ml-20 md:ml-20 sm: ml-[60px] flex gap-4 relative'> 
+        <div className='lg:ml-20 md:ml-20 sm:ml-[0px] flex gap-4 relative'> 
             <div className='rounded-3xl'>
                 <Link href={`/detail/${post._id}`}>
                     <div>
                         <div className='mb-5'>
-                            <p className='text-[rgb(232,232,232)]'><b>{post.caption}</b></p>
+                            <p className='text-[rgb(232,232,232)] cursor-pointer'><b>{post.caption}</b></p>
                             <p className='text-sm text-slate-400'>#{post.topic}</p>
                         </div>
-                        <video
-                            controls
-                            ref={videoRef}
-                            loop
-                            src={post.video.asset.url}
-                            className='lg:w-[600px] h-[300px] md:h-[400px] lg:h-[528px] w-[200px] rounded-2xl cursor-pointer bg-black'/>
                     </div>
                 </Link>
+                <video
+                    controls
+                    ref={videoRef}
+                    loop
+                    src={post.video.asset.url}
+                    // className='lg:w-[600px] md:h-[400px] lg:h-[528px] w-[200px] h-[300px] rounded-2xl cursor-pointer bg-black'
+                    className='w-[300px] h-[400px] md:h-[400px] md:w-[500px] lg:w-[600px] lg:h-[528px] rounded-2xl cursor-pointer bg-black'
+                />
             </div>
         </div>
     </div>

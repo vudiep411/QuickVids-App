@@ -29,8 +29,8 @@ const Profile = ({ data }: IProps) => {
   const [username, setUsername] = useState(user.userName)
   const [image, setImage] = useState(user.image)
 
-  const videos = showUserVideos ? 'border-b-2 border-black text-white' : 'text-gray-500';
-  const liked = !showUserVideos ? 'border-b-2 border-black text-white':  'text-gray-500';
+  const videos = showUserVideos ? 'border-b-2 border-white text-white' : 'text-gray-500';
+  const liked = !showUserVideos ? 'border-b-2 border-white text-white':  'text-gray-500';
   const router = useRouter()
   const { userProfile } : {userProfile: any}= useAuthStore()
   const { id } : any = router.query

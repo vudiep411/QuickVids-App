@@ -10,6 +10,7 @@ import { createOrGetUser } from '../utils'
 import useAuthStore from '../store/authStore'
 import axios from 'axios'
 import { BASE_URL } from '../utils'
+import Dropdown from './Dropdown'
 
 const Navbar = () => {
   const {userProfile, addUser, removeUser} : any = useAuthStore()
@@ -46,8 +47,8 @@ const Navbar = () => {
           <div className='w-[100px] md:w-[130px] hidden md:block cursor-pointer flex'>
             <h1 className='font-extrabold text-transparent text-2xl bg-clip-text bg-[rgb(232,232,232)] hover:bg-[#d4d4d8]'><b>QuickVids</b></h1>
           </div>
-          <div className='md:hidden font-bold text-2xl text-white'>
-            <AiFillVideoCamera/>
+          <div className='md:hidden w-[91px]'>
+            <h3 className='text-transparent text-lg bg-clip-text bg-[rgb(232,232,232)]'><b>QuickVids</b></h3>
           </div>
         </div>
       </Link>
@@ -80,7 +81,7 @@ const Navbar = () => {
           <input
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
-            className='w-[150px] h-[30px] mr-2 rounded pl-2'
+            className='w-[170px] h-[30px] mr-2 rounded pl-2'
             placeholder='Search'
           />
             <button
@@ -129,13 +130,19 @@ const Navbar = () => {
           </button>
         </div>
         ) : (
-          <div className=''>
+          <>
+          <div className='hidden md:block'>
             <GoogleLogin
               useOneTap
               onSuccess={(response) => createOrGetUser(response, addUser)}
               onError={() => {console.log('Error')}}
             />
           </div>
+          <div className='md:hidden'>
+            <Dropdown addUser={addUser}/>
+          </div>
+          </>
+
         )}
       </div>
     </div>
