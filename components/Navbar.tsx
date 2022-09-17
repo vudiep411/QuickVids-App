@@ -39,6 +39,12 @@ const Navbar = () => {
     fetchUser()
   }, [userProfile])
   
+  const logout = () => {
+    googleLogout()
+    removeUser()
+    router.push('/')
+  }
+
   return (
     <div className='w-full flex justify-between items-center bg- py-2 px-4'>
       <Link href="/">
@@ -80,7 +86,7 @@ const Navbar = () => {
           <input
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
-            className='w-[170px] h-[30px] mr-2 rounded pl-2'
+            className='w-[161px] h-[30px] mr-2 rounded pl-2'
             placeholder='Search'
           />
             <button
@@ -94,54 +100,19 @@ const Navbar = () => {
       </div>
       <div>
         {userProfile ? (
-        <div className='flex gap-5 md:gap-10 mt-1'>
+        <div className='flex gap-3 md:gap-10 mt-1'>
           <Link href='/upload'>
             <button className='ml-[5px]'>
               <RiVideoAddFill className={`text-3xl text-white ${transition}`}/>
             </button>
           </Link>
           {/* render profile image */}
-          {userProfile.image && (
-            <Link href={`/profile/${userProfile._id}`}>        
-              <div className={`${transition} w-[35px] md:w-[40px]`}>
-                <Image
-                  width={40}
-                  height={40}
-                  className='rounded-full h-10 w-10 object-scale-down bg-black cursor-pointer'
-                  src={image}
-                  alt='profile photo'
-                />
-              </div>      
-            </Link>
-          )}
-
-          {/* logout */}
-          <button
-            type='button'
-            className={`mr-[5px] ${transition}`}
-            onClick={() => {
-              googleLogout()
-              removeUser()
-              router.push('/')
-            }}
-          >
-            <AiOutlineLogout color='red' fontSize={22}/>
-          </button>
+          <Dropdown addUser={addUser} createOrGetUser={createOrGetUser} userProfile={userProfile} image={image} logout={logout} router={router}/>
         </div>
         ) : (
-          <>
-          <div className='hidden md:block'>
-            <GoogleLogin
-              useOneTap
-              onSuccess={(response) => createOrGetUser(response, addUser)}
-              onError={() => {console.log('Error')}}
-            />
+          <div>
+            <Dropdown addUser={addUser} createOrGetUser={createOrGetUser} userProfile={userProfile} image={image} logout={logout} router={router}/>
           </div>
-          <div className='md:hidden'>
-            <Dropdown addUser={addUser} createOrGetUser={createOrGetUser}/>
-          </div>
-          </>
-
         )}
       </div>
     </div>

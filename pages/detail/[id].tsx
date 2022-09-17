@@ -58,7 +58,7 @@ const Detail = ({postDetails} : IProps) => {
  }
   return (
     <div>
-      <div className='flex w-full absolute left-0 top-[68px] bg-[rgb(24,24,24)] flex-wrap lg:flex-nowrap'>
+      <div className='flex w-full absolute left-0 top-[55px] md:top-[68px] bg-[rgb(24,24,24)] flex-wrap lg:flex-nowrap'>
         <div className='relative flex-2 w-[1000px] lg:w-9/12 flex justify-center items-center bg-black bg-no-repeat bg-cover bg-center'>
           <div className='opacity-90 absolute top-6 left-2 lg:left-6 flex gap-6 z-50'>
             <p className='cursor-pointer' onClick={() => {router.push('/')}}>

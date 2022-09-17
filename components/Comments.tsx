@@ -87,8 +87,8 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment 
         </div>
         ) : (
         <div>
-          <h2>
-            Sign in To comment!
+          <h2 className='text-white mt-10'>
+            <b>Sign in To comment!</b>
           </h2>
         </div>
       )}

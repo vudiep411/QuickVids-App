@@ -82,7 +82,7 @@ const Upload = () => {
         setMissing('')
     }
   return (
-    <div className='flex w-full h-full absolute left-0 top-[61px] mb-10 lg:mt-[10px] bg-[rgb(24,24,24)] justify-center'>
+    <div className='flex w-full absolute left-0 mb-10 lg:mt-[10px] bg-[rgb(24,24,24)] justify-center h-[100vh]'>
         <div className='rounded-lg flex gap-6 flex-wrap justify-center items-center p-14 pt-6'>
             <div>
                 <div>
