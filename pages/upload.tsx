@@ -82,17 +82,17 @@ const Upload = () => {
         setMissing('')
     }
   return (
-    <div className='flex w-full h-full absolute left-0 top-[61px] mt-2 mb-10 pt-10 bg-gradient-to-r from-rose-100 to-teal-100 justify-center'>
-        <div className='lg:bg-white md:bg-white rounded-lg flex gap-6 flex-wrap justify-center items-center p-14 pt-6'>
+    <div className='flex w-full h-full absolute left-0 top-[61px] mb-10 lg:mt-[10px] bg-[rgb(24,24,24)] justify-center'>
+        <div className='rounded-lg flex gap-6 flex-wrap justify-center items-center p-14 pt-6'>
             <div>
                 <div>
-                    <p className='text-2xl font-bold'>Upload Video</p>
+                    <p className='text-2xl font-bold text-[rgb(232,232,232)]'>Upload Video</p>
                     <p className='text-md text-gray-400 mt-1'>Post a Video</p>
                 </div>
-                <div className='border-dashed rounded-xl border-4 lg:border-gray-200 md:border-gray-200 border-[#94a3b8] flex flex-col justify-center items-center  outline-none mt-10 w-[260px] h-[458px] p-10 cursor-pointer hover:border-red-300 hover:bg-gray-100'>
+                <div className='border-dashed rounded-xl border-4 lg:border-[rgb(232,232,232)] md:border-[rgb(232,232,232)] border-[rgb(232,232,232)] flex flex-col justify-center items-center  outline-none mt-10 w-[260px] h-[458px] p-10 cursor-pointer hover:border-red-300 hover:bg-[rgb(48,48,48)]'>
                     {isLoading ? (
                         <div className='items-center flex flex-col'>
-                            <p className='font-bold'>Uploading...</p>
+                            <p className='font-bold text-white'>Uploading...</p>
                             <p className='mt-5'><ThreeDots fill='#FF1493' strokeWidth={2}/></p>
                         </div>
                         ) : (
@@ -113,9 +113,9 @@ const Upload = () => {
                                     <div className='flex flex-col items-center justify-center h-full'>
                                         <div className='flex flex-col justify-center items-center'>
                                             <p className='font-bold text-xl'>
-                                                <FaCloudUploadAlt className='text-gray-300 text-6xl'/>
+                                                <FaCloudUploadAlt className='text-white text-6xl'/>
                                             </p>
-                                            <p className='text-xl font-semibold'>Upload a Video</p>
+                                            <p className='text-xl text-[rgb(232,232,232)] font-semibold'>Upload a Video</p>
                                         </div>
                                         <p className='text-gray-400 text-center mt-10 text-sm leading-10'>
                                             mp4, webM, ogg <br/>
@@ -123,7 +123,7 @@ const Upload = () => {
                                             Up to 10 mins<br/>
                                             Less than 2GB
                                         </p>
-                                        <p className='bg-[#3b82f6] text-center mt-8 rounded text-white text-md font-medium p-2 w-52 outline-none'>
+                                        <p className='bg-[rgb(64,64,64)] text-center mt-8 rounded text-white text-md font-medium p-2 w-52 outline-none'>
                                             Select File
                                         </p>
                                         <input
@@ -150,14 +150,14 @@ const Upload = () => {
             }
             {/* form caption and topics*/}
             <div className='flex flex-col gap-3 pb-10'>
-                <label className='text-md font-medium '>Caption</label>
+                    <label className='text-md font-medium text-[rgb(232,232,232)]'>Caption</label>
                 <input
                     type='text'
                     value={caption}
                     onChange={(e) => setCaption(e.target.value)}
                     className='rounded outline-none text-md border-2 border-gray-200 p-2'
                 />
-                <label className='text-md font-medium '>Choose a topic</label>
+                <label className='text-md font-medium text-[rgb(232,232,232)]'>Choose a topic</label>
 
                 <select
                     defaultValue=''
@@ -180,7 +180,7 @@ const Upload = () => {
                     <button
                         onClick={handleDiscard}
                         type='button'
-                        className='border-gray-300 border-2 text-md font-medium p-2 rounded w-28 lg:w-44 outline-none hover:bg-[#F51900]'
+                        className='border-gray-300 border-2 text-md text-white font-medium p-2 rounded w-28 lg:w-44 outline-none bg-[rgb(64,64,64)]'
                     >
                         Discard
                     </button>

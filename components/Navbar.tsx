@@ -39,7 +39,6 @@ const Navbar = () => {
     fetchUser()
   }, [userProfile])
   
-
   return (
     <div className='w-full flex justify-between items-center bg- py-2 px-4'>
       <Link href="/">
@@ -47,7 +46,7 @@ const Navbar = () => {
           <div className='w-[100px] md:w-[130px] hidden md:block cursor-pointer flex'>
             <h1 className='font-extrabold text-transparent text-2xl bg-clip-text bg-[rgb(232,232,232)] hover:bg-[#d4d4d8]'><b>QuickVids</b></h1>
           </div>
-          <div className='md:hidden w-[91px]'>
+          <div className='md:hidden'>
             <h3 className='text-transparent text-lg bg-clip-text bg-[rgb(232,232,232)]'><b>QuickVids</b></h3>
           </div>
         </div>
@@ -104,7 +103,7 @@ const Navbar = () => {
           {/* render profile image */}
           {userProfile.image && (
             <Link href={`/profile/${userProfile._id}`}>        
-              <div className={`${transition}`}>
+              <div className={`${transition} w-[40px]`}>
                 <Image
                   width={40}
                   height={40}
@@ -139,7 +138,7 @@ const Navbar = () => {
             />
           </div>
           <div className='md:hidden'>
-            <Dropdown addUser={addUser}/>
+            <Dropdown addUser={addUser} createOrGetUser={createOrGetUser}/>
           </div>
           </>
 

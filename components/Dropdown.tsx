@@ -1,10 +1,9 @@
 import React, {useState} from 'react'
 import { AiOutlineMenu } from 'react-icons/ai';
 import { ImCancelCircle } from 'react-icons/im';
-import { createOrGetUser } from '../utils';
 import { GoogleLogin } from '@react-oauth/google';
 
-const Dropdown = ({addUser} : any) => {
+const Dropdown = ({addUser, createOrGetUser} : any) => {
     const [isActive, setIsActive] = useState(false)
     const handleActive = () => {
         if(isActive)
