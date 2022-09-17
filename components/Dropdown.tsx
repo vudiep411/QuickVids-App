@@ -13,6 +13,7 @@ const Dropdown = ({addUser, createOrGetUser, userProfile, image, logout, router}
         else
             setIsActive(true)
     }
+    const signIn = !userProfile ? 'w-54' : 'w-40'
   return (
     <div className="relative inline-block text-left">
         {
@@ -36,7 +37,7 @@ const Dropdown = ({addUser, createOrGetUser, userProfile, image, logout, router}
         }
 
 {   isActive &&   
-    <div className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-[rgb(64,64,64)]  shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" >
+    <div className={`absolute right-0 z-10 mt-2 ${signIn} origin-top-right rounded-md bg-[rgb(64,64,64)]  shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`} role="menu" aria-orientation="vertical" aria-labelledby="menu-button" >
         <div>
             {   !userProfile &&
                 <div className="text-gray-700 block text-sm p-2" role="menuitem" >
@@ -55,7 +56,7 @@ const Dropdown = ({addUser, createOrGetUser, userProfile, image, logout, router}
                         router.push(`/profile/${userProfile._id}`)
                         handleActive()
                     }}
-                        className="block w-full text-sm" role="menuitem">Your Profile</button>                              
+                    className="block w-full text-sm" role="menuitem">Your Profile</button>                              
                 </div>
                 <div className="text-white block text-sm p-2 rounded-md hover:bg-[rgb(80,80,80)]" role="menuitem" >
                     <button onClick={logout} className="block w-full text-sm" role="menuitem">Sign out</button>                              
