@@ -21,7 +21,6 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
     const { userProfile } :any = useAuthStore()
     const router = useRouter()
 
-
 const handleDelete = async () => {
     await axios.delete(`${BASE_URL}/api/post/delete`, {data: {id: post._id}})
     router.reload()
@@ -80,9 +79,12 @@ const handleDelete = async () => {
                     ref={videoRef}
                     loop
                     src={post.video.asset.url}
-                    // className='lg:w-[600px] md:h-[400px] lg:h-[528px] w-[200px] h-[300px] rounded-2xl cursor-pointer bg-black'
                     className='w-[300px] h-[400px] md:h-[400px] md:w-[500px] lg:w-[600px] lg:h-[528px] rounded-2xl cursor-pointer bg-black'
                 />
+                <div className='flex gap-5 mt-2'>
+                    <a href={`/detail/${post._id}`} className='text-[rgb(232,232,232)] cursor-pointer'><b>{post?.likes?.length || 0}</b> Likes</a>
+                    <a href={`/detail/${post._id}`} className='text-[rgb(232,232,232)] cursor-pointer'><b>{post?.comments?.length || 0}</b> Comments</a>
+                </div>
             </div>
         </div>
     </div>
