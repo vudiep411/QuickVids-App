@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { AiOutlineMenu } from 'react-icons/ai';
 import { ImCancelCircle } from 'react-icons/im';
 import { GoogleLogin } from '@react-oauth/google';
-import Image from 'next/image';
+import Avatar from '@mui/material/Avatar';
 
 const Dropdown = ({addUser, createOrGetUser, userProfile, image, logout, router} : any) => {
     const transition = 'transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110'
@@ -25,13 +25,22 @@ const Dropdown = ({addUser, createOrGetUser, userProfile, image, logout, router}
             </button>
             ):(
             <div className={`${transition} w-[30px] md:w-[40px]`} onClick={handleActive}>
-                <Image
-                    width={40}
-                    height={40}
-                    className='rounded-full h-10 w-10 object-scale-down bg-black cursor-pointer'
+                <Avatar                    
+                    style={{cursor: 'pointer'}}
+                    sx={{width: 40, 
+                        height: 40,
+                        display: { xs: 'none', md: 'block' }
+                    }}
                     src={image}
-                    alt='profile photo'
                 />
+                <Avatar                    
+                    style={{cursor: 'pointer'}}
+                    sx={{width: 30, 
+                        height: 30,
+                        display: { xs: 'block', md: 'none' }
+                    }}
+                    src={image}
+                />                
             </div>                    
             )
         }

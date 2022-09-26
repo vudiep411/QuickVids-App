@@ -1,12 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import { GoVerified } from 'react-icons/go';
-import Image from 'next/image';
 import Link from 'next/link';
-import { MdComment, MdOutlineCancel } from 'react-icons/md';
+import {  MdOutlineCancel } from 'react-icons/md';
 import { BASE_URL } from '../../utils';
-import moment from 'moment'
+import Avatar from '@mui/material/Avatar';
 
+import moment from 'moment'
 import axios from 'axios';
 import { Video } from '../../type';
 import useAuthStore from '../../store/authStore';
@@ -81,11 +81,8 @@ const Detail = ({postDetails} : IProps) => {
           <div className='lg:mt-20 mt-10'>
             <Link href={`/profile/${post.postedBy._id}`}>
             <div className='flex gap-4 mb-4 bg-[rgb(24,24,24)] w-full pl-10 cursor-pointer'>
-              <Image
-                width={62}
-                height={62}
-                alt='user-profile'
-                className='rounded-full h-26 w-26 object-scale-down bg-black'
+              <Avatar
+                sx={{width: 62, height: 62}}
                 src={post.postedBy.image}
               />
               <div>

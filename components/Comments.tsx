@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { GoVerified } from 'react-icons/go';
+import { Avatar } from '@mui/material';
 
 import useAuthStore from '../store/authStore';
 import { IUser } from '../type';
@@ -38,13 +38,9 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment 
                       <Link href={`/profile/${user._id}`}>
                         <div className='flex items-start gap-3'>
                           <div className='w-12 h-12'>
-                            <Image
-                              width={48}
-                              height={48}
-                              className='rounded-full h-32 w-32 object-scale-down bg-black'
+                            <Avatar
+                              sx={{width: 48, height: 48}}
                               src={user.image}
-                              alt='user-profile'
-                              layout='responsive'
                             />
                           </div>
 

@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import Image from 'next/image';
 import { NextPage } from 'next';
 import Link from 'next/link';
 import { GoVerified } from 'react-icons/go';
+import Avatar from '@mui/material/Avatar';
 
 import { IUser } from '../type';
 import useAuthStore from '../store/authStore';
@@ -33,12 +33,9 @@ const SuggestedAccounts: NextPage<IProps> = () => {
           <Link href={`/profile/${user._id}`} key={user._id}>
             <div className='flex gap-3 hover:bg-[rgb(80,80,80)] p-2 cursor-pointer font-semibold rounded'>
               <div className='w-8 h-8'>
-                <Image
-                  width={34}
-                  height={34}
-                  className='rounded-full w-8 h-8 object-scale-down bg-black'
-                  src={user.image}
-                  alt='user-profile'
+                  <Avatar
+                    sx={{width: 34, height: 34}}
+                    src={user.image}
                   />
               </div>
 

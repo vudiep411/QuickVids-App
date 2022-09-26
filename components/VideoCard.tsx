@@ -1,10 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import { NextPage } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { GoVerified } from 'react-icons/go';
 import moment from 'moment';
 import Popup from './Popup';
+import { Avatar } from '@mui/material';
 
 import axios from 'axios';
 import { useRouter } from 'next/router';
@@ -33,13 +33,20 @@ const handleDelete = async () => {
             <div className='md:w-16 md:h-16 w-10 h-10 cursor-pointer'>
                 <Link href={`/profile/${post.postedBy._id}`}>
                     <div className='mt-2'>
-                        <Image
-                            width={60}
-                            height={60}
-                            className='rounded-full w-10 h-10 md:w-16 md:h-16 object-scale-down bg-black'
+                        <Avatar                             
+                            sx={{display: { xs: 'none', md: 'block' },
+                            width: 60, 
+                            height: 60}}
                             src={post.postedBy?.image}
-                            alt='profile photo'
                         />
+                        <Avatar                             
+                            sx={{display: { xs: 'block', md: 'none' },
+                            width: 40, 
+                            height: 40,
+                            marginTop: '13px'
+                        }}
+                            src={post.postedBy?.image}
+                        />                        
                     </div>
                 </Link>
             </div>

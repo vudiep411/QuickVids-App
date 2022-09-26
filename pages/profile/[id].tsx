@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { GoVerified } from 'react-icons/go';
 import axios from 'axios';
-import Image from 'next/image';
+import Avatar from '@mui/material/Avatar';
 
 import VideoCard from '../../components/VideoCard';
 import NoResults from '../../components/NoResults';
@@ -90,13 +90,21 @@ const Profile = ({ data }: IProps) => {
     <div className='w-full'>
       <div className='flex gap-6 md:gap-5 mb-4 w-full'>
         <div className='w-16 h-16 md:w-32 md:h-32'>
-          <Image
-              width={100}
-              height={100}
-              className='rounded-full w-16 h-16 md:w-32 md:h-32 object-scale-down bg-black'
-              src={image}
-              alt='user-profile'
-            />
+          <Avatar
+            sx={{display: { xs: 'none', md: 'block' }, 
+            height: 100, 
+            width: 100
+          }}
+            src={image}
+          />
+          <Avatar
+            sx={{display: { xs: 'block', md: 'none' }, 
+            height: 75, 
+            width: 75,
+            marginTop: '9px'
+          }}
+            src={image}
+          />
         </div>
         <div>
           <div className='text-md text-2xl font-bold tracking-wider flex gap-2 items-center justify-center lowercase text-[rgb(232,232,232)]'>

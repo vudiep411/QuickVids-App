@@ -3,7 +3,7 @@ import { AiFillEdit } from 'react-icons/ai'
 import axios from 'axios';
 import { BASE_URL } from '../utils';
 import { client } from '../utils/client';
-import Image from 'next/image';
+import Avatar from '@mui/material/Avatar';
 
 const Modal = ({name, username, setName, setUsername, image, setImage, id} : any) => {
     const [showModal, setShowModal] = useState(false);
@@ -104,10 +104,8 @@ const Modal = ({name, username, setName, setUsername, image, setImage, id} : any
                       />
                   </div>
                   <div className=''>
-                    <Image
-                      width={100}
-                      height={100} 
-                      className='rounded-full h-32 w-32 object-scale-down bg-black'
+                    <Avatar
+                      sx={{width: 100, height: 100}}
                       src={newImg}
                     />
                   </div>

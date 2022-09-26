@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { GoVerified } from 'react-icons/go';
 import Link from 'next/link';
 import axios from 'axios';
+import Avatar from '@mui/material/Avatar';
 
 import NoResults from '../../components/NoResults';
 import VideoCard from '../../components/VideoCard';
@@ -37,12 +37,10 @@ const Search = ({ videos } : {videos: Video[]}) => {
               <Link key={idx} href={`/profile/${user._id}`}>
                 <div className=' flex gap-3 p-2 cursor-pointer font-semibold rounded'>
                   <div>
-                    <Image 
-                      width={50} 
-                      height={50} 
-                      className='rounded-full h-10 w-10 object-scale-down bg-black cursor-pointer' 
-                      alt='user-profile' 
-                      src={user.image}/>
+                    <Avatar
+                      sx={{width: 50, height: 50}}
+                      src={user.image}
+                    />
                   </div>
                   <div>
                     <div>
