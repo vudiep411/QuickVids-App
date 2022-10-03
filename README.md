@@ -35,7 +35,7 @@
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Web Architect
-<img src='/webarch.png'/>
+<img src='/public/images/webarch.png'/>
 
 
 
