@@ -17,13 +17,13 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
       <GoogleOAuthProvider clientId={`${process.env.GOOGLE_TOKEN}`}>
-        <Navbar/>
         <div className='xl:w-[1200px] m-auto overflow-hidden h-[100vh]'>
+        <Navbar/>
           <div className='flex gap-5 md:gap-20'>
-            <div className='h-[92vh] overflow-hidden xl:hover:overflow-auto'>
+            <div className='h-[92vh] overflow-hidden xl:hover:overflow-scroll'>
               <Sidebar/>
             </div>
-            <div className='flex flex-col gap-10 overflow-auto h-[90vh] videos flex-1 mr-[2px] mb-20'>
+            <div className='flex flex-col gap-10 overflow-auto h-[92vh] videos flex-1 mr-[5px] mb-20'>
               <Component {...pageProps}/>
             </div>
           </div>
