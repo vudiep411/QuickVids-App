@@ -3,6 +3,7 @@ import { AiOutlineMenu } from 'react-icons/ai';
 import { ImCancelCircle } from 'react-icons/im';
 import { GoogleLogin } from '@react-oauth/google';
 import Avatar from '@mui/material/Avatar';
+import { Typography } from '@mui/material';
 
 const Dropdown = ({addUser, createOrGetUser, userProfile, image, logout, router} : any) => {
     const transition = 'transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110'
@@ -19,9 +20,9 @@ const Dropdown = ({addUser, createOrGetUser, userProfile, image, logout, router}
         {
             !userProfile ? 
             (
-            <button onClick={handleActive} className="text-white md:text-2xl">
+            <button onClick={handleActive} className="text-white md:text-2xl hover:bg-[rgb(80,80,80)] p-2 rounded-md">
             {   !isActive ?
-                <AiOutlineMenu/> : <ImCancelCircle/>}
+                <Typography>Sign In</Typography> : <ImCancelCircle/>}
             </button>
             ):(
             <div className={`${transition} w-[30px] md:w-[40px]`} onClick={handleActive}>
