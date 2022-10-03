@@ -103,9 +103,10 @@ sanity start
 <p><b>Note:</b></p>
 
 >⚠ Sign up to get Sanity secret token and place it in a .env file after to start with sanity follow instructions and install all packages needed
-<img src='/public/images/nextconfig.png'/>
-> ⚠ The client will be started at http://127.0.0.1:3000/ 
-> ⚠ Sanity development server will be started at http://127.0.0.1:3333/ 
+>⚠ Make sure to register environments variables in next.config.json file
+<img src='/public/images/nextconfig.png'/><br/>
+>⚠ The client will be started at http://127.0.0.1:3000/ 
+>⚠ Sanity development server will be started at http://127.0.0.1:3333/ 
 
 
 
