@@ -112,7 +112,11 @@ const Profile = ({ data }: IProps) => {
             <GoVerified className='text-blue-400 md:text-xl text-md mt-2' />
           </div>
           <p className='text-sm font-medium text-[rgb(232,232,232)]'> {name}</p>
-          <p className='mt-3 text-[rgb(232,232,232)]'><b>{noOfFollowers?.length || 0}</b> Followers</p>
+          <p className='mt-3 text-[rgb(232,232,232)] cursor-pointer hover:text-gray-500'
+              onClick={() => router.push(`/followers/${id}`)}
+          ><b>
+            {noOfFollowers?.length || 0}
+            </b> Followers</p>
           { (userProfile?._id !== id && userProfile) &&
             <FollowButton/>
           }

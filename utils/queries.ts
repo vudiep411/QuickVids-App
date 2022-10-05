@@ -210,4 +210,25 @@ export const topicPostsQuery = (topic: string | string[]) => {
 
 export const singlePostquery = (post: string | string[]) => {
   const query = `*[ _type == 'post' && _id == '${post}']`
+  return query
+}
+
+export const getFollowersQuery = (userId: string | string[]) => {
+  const query = `*[_type == "user" && _id == '${userId}']{
+    followers[]{
+      _key,
+      _ref
+    }
+  }`
+  return query
+}
+
+export const getFollowersInfo = (userId: string | string[]) => {
+  const query = `*[_type == "user" && _id == '${userId}']{
+    userName,
+    image,
+    _id,
+    name
+  }`
+  return query  
 }
