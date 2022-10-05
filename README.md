@@ -25,8 +25,8 @@ A social media platform for people to post videos, follows, like and comment usi
   
 
 ![hr](https://raw.githubusercontent.com/vudiep411/QuickVids-App/main/quickvids1.png)<br/>
-<img src="/public/images/overview1"/><br/>
-<img src="/public/images/overview2"/><br/>
+<img src="/public/images/overview1.png"/><br/>
+<img src="/public/images/overview2.png"/><br/>
 
 
 <a  href='https://quick-vids-app.vercel.app/'>Visit the fully deployed project</a>
