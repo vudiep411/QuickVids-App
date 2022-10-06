@@ -21,7 +21,6 @@ const SuggestedAccounts: NextPage<IProps> = () => {
 
   }, [fetchAllUsers])
 
-  const shuffleUsers = shuffleArray(allUsers)
 
   return (
     <div className='xl:border-b-2 border-gray-400 pb-4'>
@@ -29,7 +28,7 @@ const SuggestedAccounts: NextPage<IProps> = () => {
         Suggested Accounts
       </p>
       <div>
-        {shuffleUsers?.slice(0, 6).map((user: IUser) => (
+        {allUsers?.slice(0, 6).map((user: IUser) => (
           <Link href={`/profile/${user._id}`} key={user._id}>
             <div className='flex gap-3 hover:bg-[rgb(80,80,80)] p-2 cursor-pointer font-semibold rounded'>
               <div className='w-8 h-8'>

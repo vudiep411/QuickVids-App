@@ -1,4 +1,4 @@
-import { BsEmojiSmileFill } from 'react-icons/bs';
+import { BsEmojiSmileFill, BsMusicNote } from 'react-icons/bs';
 import { GiGalaxy, GiLips, GiFoodTruck, GiGameConsole, GiPawPrint, GiStarMedal} from 'react-icons/gi';
 import  {AiFillCode} from 'react-icons/ai'
 
@@ -20,8 +20,8 @@ export const topics = [
     icon: <GiFoodTruck />,
   },
   {
-    name: 'dance',
-    icon: <GiGalaxy/>,
+    name: 'music',
+    icon: <BsMusicNote/>,
   },
   {
     name: 'beauty',

@@ -18,6 +18,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             }
         }
 
-        res.status(200).json(followersData)
+        res.status(200).json({data: followersData, image: followers[0].image, userName: followers[0].userName})
     }
 }

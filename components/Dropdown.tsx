@@ -1,9 +1,12 @@
 import React, {useState} from 'react'
-import { AiOutlineMenu } from 'react-icons/ai';
 import { ImCancelCircle } from 'react-icons/im';
 import { GoogleLogin } from '@react-oauth/google';
 import Avatar from '@mui/material/Avatar';
-import { Typography } from '@mui/material';
+import { Divider, Typography } from '@mui/material';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
+import InfoIcon from '@mui/icons-material/Info';
+import HelpIcon from '@mui/icons-material/Help';
 
 const Dropdown = ({addUser, createOrGetUser, userProfile, image, logout, router} : any) => {
     const transition = 'transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110'
@@ -65,14 +68,29 @@ const Dropdown = ({addUser, createOrGetUser, userProfile, image, logout, router}
                     <button onClick={() => {
                         router.push(`/profile/${userProfile._id}`)
                         handleActive()
-                    }}
-                    className="block w-full text-sm" role="menuitem">Your Profile</button>                              
+                        }}
+                        className="block w-full text-sm" role="menuitem">
+                            <AccountCircleIcon/>&nbsp; Profile
+                    </button>                              
                 </div>
                 <div className="text-white block text-sm p-2 rounded-md hover:bg-[rgb(80,80,80)]" role="menuitem" >
-                    <button onClick={logout} className="block w-full text-sm" role="menuitem">Sign out</button>                              
+                    <button onClick={logout} className="block w-full text-sm" role="menuitem">
+                    <p><PowerSettingsNewIcon/>&nbsp; Sign out</p>    
+                    </button>                              
                 </div>
             </div>
             }
+            <Divider/>
+            <div className="text-white block text-sm p-2 rounded-md hover:bg-[rgb(80,80,80)]" role="menuitem" >
+                <button className="block w-full text-sm" role="menuitem">
+                    <p><InfoIcon/>&nbsp; About</p>    
+                </button>                              
+            </div>
+            <div className="text-white block text-sm p-2 rounded-md hover:bg-[rgb(80,80,80)]" role="menuitem" >
+                <button className="block w-full text-sm" role="menuitem">
+                    <p><HelpIcon/>&nbsp; Help</p>    
+                </button>                              
+            </div>
         </div>
       </div> 
 }

@@ -218,7 +218,9 @@ export const getFollowersQuery = (userId: string | string[]) => {
     followers[]{
       _key,
       _ref
-    }
+    },
+    image,
+    userName,
   }`
   return query
 }

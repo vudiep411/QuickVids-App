@@ -1,7 +1,7 @@
 import create from 'zustand';
 import { persist } from 'zustand/middleware';
 import axios from 'axios';
-
+import { shuffleArray } from '../utils/shuffle';
 import { BASE_URL } from '../utils';
 
 const authStore = (set: any) => ({
@@ -13,7 +13,8 @@ const authStore = (set: any) => ({
 
   fetchAllUsers: async () => {
     const response = await axios.get(`${BASE_URL}/api/users`);
-    set({ allUsers: response.data });
+    const data = shuffleArray(response.data)
+    set({ allUsers: data });
   },
   
 });

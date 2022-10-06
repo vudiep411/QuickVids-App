@@ -37,7 +37,7 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment 
                     <div className=' p-2 mb-2 items-center' key={i}>
                       <Link href={`/profile/${user._id}`}>
                         <div className='flex items-start gap-3'>
-                          <div className='w-12 h-12'>
+                          <div className='w-12 h-12 cursor-pointer'>
                             <Avatar
                               sx={{width: 48, height: 48}}
                               src={user.image}
