@@ -13,6 +13,7 @@ import useAuthStore from '../../store/authStore';
 import LikeButton from '../../components/LikeButton'
 import Comments from '../../components/Comments'
 
+
 interface IProps {
   postDetails: Video
 }

@@ -6,14 +6,9 @@ import Avatar from '@mui/material/Avatar';
 
 import { IUser } from '../type';
 import useAuthStore from '../store/authStore';
-import { shuffleArray } from '../utils/shuffle'
 
-interface IProps {
-  // fetchAllUsers: () => void;
-  // allUsers: IUser[];
-}
 
-const SuggestedAccounts: NextPage<IProps> = () => {
+const SuggestedAccounts: NextPage = () => {
   const { fetchAllUsers, allUsers } = useAuthStore()
   
   useEffect(() => {
