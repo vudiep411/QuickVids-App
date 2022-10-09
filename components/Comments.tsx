@@ -6,7 +6,9 @@ import { Avatar } from '@mui/material';
 import useAuthStore from '../store/authStore';
 import { IUser } from '../type';
 import NoResults from './NoResults';
-
+import DeleteIcon from '@mui/icons-material/Delete';
+import axios from 'axios';
+import { BASE_URL } from '../utils';
 
 interface IProps {
   isPostingComment: Boolean;
@@ -14,6 +16,9 @@ interface IProps {
   setComment: Dispatch<SetStateAction<string>>;
   addComment: (e: React.FormEvent) => void;
   comments: IComment[];
+  postId: any;
+  setPost: any;
+  post: any
 }
 
 interface IComment {
@@ -23,8 +28,15 @@ interface IComment {
   postedBy: { _ref?: string; _id?: string };
 }
 
-const Comments = ({ comment, setComment, addComment, comments, isPostingComment } : IProps) => {
-  const { userProfile, allUsers } = useAuthStore()
+const Comments = ({ comment, setComment, addComment, comments, isPostingComment, postId, setPost, post } : IProps) => {
+  const { userProfile, allUsers } : any = useAuthStore()
+  const deleteComment = async (key : any) => {
+    if(userProfile) {
+      axios.delete(`${BASE_URL}/api/comments`, {data: {key: key, postId: postId }})
+      const newComments = post?.comments.filter((item : any)=> item._key !== key)
+      setPost({...post, comments: newComments})
+    }
+  }
   return (
     <div className='border-t-2 border-gray-600 pt-4 px-10 mt-4 border-b-2 lg:pb-0 pb-[100px] bg-[rgb(32,32,32)]'>
       <div className='lg:h-[457px] lg:overflow-scroll'>
@@ -35,21 +47,30 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment 
                 (user: IUser, i:number) =>
                   user._id === (item.postedBy._ref || item.postedBy._id) && (
                     <div className=' p-2 mb-2 items-center' key={i}>
-                      <Link href={`/profile/${user._id}`}>
-                        <div className='flex items-start gap-3'>
-                          <div className='w-12 h-12 cursor-pointer'>
-                            <Avatar
-                              sx={{width: 48, height: 48}}
-                              src={user.image}
-                            />
+                      <div className='flex items-start gap-3'>
+                        <Link href={`/profile/${user._id}`}>
+                          <div className='flex items-start gap-3'>
+                            <div className='w-12 h-12 cursor-pointer'>
+                              <Avatar
+                                sx={{width: 48, height: 48}}
+                                src={user.image}
+                              />
+                            </div>
+                            <p className='flex cursor-pointer gap-1 items-center text-[18px] font-bold leading-6 text-[rgb(232,232,232)]'>
+                              {user.userName}
+                              <GoVerified className='text-blue-400' />
+                            </p>
                           </div>
-
-                          <p className='flex cursor-pointer gap-1 items-center text-[18px] font-bold leading-6 text-[rgb(232,232,232)]'>
-                            {user.userName}{' '}
-                            <GoVerified className='text-blue-400' />
+                        </Link>
+                        {userProfile?._id === item.postedBy._id && 
+                          <p 
+                            className='text-[#dc2626] cursor-pointer transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110'
+                            onClick={() => deleteComment(item._key)}
+                          >
+                            <DeleteIcon fontSize='small'/>
                           </p>
-                        </div>
-                      </Link>
+                        }
+                      </div>
                       <div>
                         <p className='-mt-5 ml-16 text-[16px] mr-8 text-[rgb(232,232,232)]'>
                           {item.comment}

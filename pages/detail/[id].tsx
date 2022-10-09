@@ -25,8 +25,9 @@ const Detail = ({postDetails} : IProps) => {
   const videoRef = useRef<HTMLVideoElement>(null)
   const { userProfile } : any = useAuthStore()
   const router = useRouter()
+  const { id } : any = router.query
 
-  if(!post) return null
+  if(!post) return null 
 
  const handleLike = async (like: boolean) => {
     if(userProfile) {
@@ -90,7 +91,6 @@ const Detail = ({postDetails} : IProps) => {
                   {post.postedBy.userName.replace(/\s+/g, '')}
                   <GoVerified className='text-blue-400 text-xl' />
                 </div>
-                {/* <p className='text-md'> {post.postedBy.userName}</p> */}
                 <p className='text-sm text-slate-400'>{moment(post.date).fromNow()}</p>
               </div>
             </div>
@@ -113,6 +113,9 @@ const Detail = ({postDetails} : IProps) => {
               addComment={addComment}
               comments={post.comments}
               isPostingComment={isPostingComment}
+              postId={id}
+              setPost={setPost}
+              post={post}
             />
           </div>
         </div>
