@@ -46,7 +46,9 @@ A social media platform for people to post videos, follows, like and comment usi
 
 <img  src='/public/images/webarch.png'/>
 
+## Database Design
 
+<img src='/public/images/dbquickvids.png'/>
 
 <!-- GETTING STARTED -->
 
