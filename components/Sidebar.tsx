@@ -10,7 +10,7 @@ import Footer from './Footer';
 
 const Sidebar: NextPage = () => {
 
-  const [showSidebar, setShowSidebar] = useState(true)
+  const [showSidebar, setShowSidebar] = useState<Boolean>(true)
   const normalLink = 'flex items-center gap-3 hover:bg-primary p-3 justify-center xl:justify-start cursor-pointer font-semibold rounded text-[rgb(232,232,232)] hover:bg-[rgb(32,32,32)]'
 
   return (

@@ -30,6 +30,7 @@ interface IComment {
 
 const Comments = ({ comment, setComment, addComment, comments, isPostingComment, postId, setPost, post } : IProps) => {
   const { userProfile, allUsers } : any = useAuthStore()
+
   const deleteComment = async (key : any) => {
     if(userProfile) {
       axios.delete(`${BASE_URL}/api/comments`, {data: {key: key, postId: postId }})
@@ -37,6 +38,8 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment,
       setPost({...post, comments: newComments})
     }
   }
+
+
   return (
     <div className='border-t-2 border-gray-600 pt-4 px-10 mt-4 border-b-2 lg:pb-0 pb-[100px] bg-[rgb(32,32,32)]'>
       <div className='lg:h-[457px] lg:overflow-scroll'>
@@ -90,7 +93,9 @@ const Comments = ({ comment, setComment, addComment, comments, isPostingComment,
 
       {userProfile ? (
         <div className='absolute bottom-0 left-0 pb-6 px-2'>
-          <form onSubmit={addComment} className='flex gap-4'>
+          <form onSubmit={(e) => {
+            addComment(e);
+          }} className='flex gap-4'>
             <input
               value={comment}
               onChange={(e) => setComment(e.target.value)}

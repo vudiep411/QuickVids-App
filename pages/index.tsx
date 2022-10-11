@@ -4,16 +4,19 @@ import { Video } from '../type'
 import VideoCard from '../components/VideoCard'
 import NoResults from '../components/NoResults'
 import { BASE_URL } from '../utils'
+import { useState } from 'react'
 interface IProps {
   videos: Video[]
 }
 
 const Home = ({ videos }: IProps) => {
+  const [posts, setPosts] = useState(videos)
+
   return (
     <div className='flex flex-col gap-10 videos h-full'>
-      {videos.length ? (
-        videos.map((video : Video) => (
-          <VideoCard post={video} key={video._id}/>
+      {posts.length ? (
+        posts.map((video : Video) => (
+          <VideoCard post={video} key={video._id} setPosts={setPosts}/>
         ))
       ) : (
         <NoResults text={'No Videos'}/>

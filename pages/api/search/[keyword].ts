@@ -9,7 +9,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         const query = searchPostsQuery(keyword)
         const video = await client.fetch(query)
-        console.log(video)
         res.status(200).json(video)
     }
 }

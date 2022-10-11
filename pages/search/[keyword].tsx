@@ -14,7 +14,8 @@ import { IUser, Video } from '../../type';
 const Search = ({ videos } : {videos: Video[]}) => {
     const [isAccounts, setIsAccounts] = useState(false);
     const { allUsers } : { allUsers: IUser[] } = useAuthStore();
-  
+    const [posts, setPosts] = useState(videos)
+
     const router = useRouter();
     const { keyword }: any = router.query;
     const accounts = isAccounts ? 'border-b-2 border-white text-white' : 'text-gray-400';
@@ -61,9 +62,9 @@ const Search = ({ videos } : {videos: Video[]}) => {
         </div>
       ) : (
         <div className='md:mt-16 flex flex-wrap gap-6 md:justify-start '>
-          {videos?.length ? (
-            videos.map((post: Video, idx: number) => (
-              <VideoCard post={post} key={idx} />
+          {posts?.length ? (
+            posts.map((post: Video, idx: number) => (
+              <VideoCard post={post} key={idx} setPosts={setPosts}/>
             ))
           ) : (
             <NoResults text={`No Video Results for ${keyword}`} />

@@ -6,7 +6,7 @@ interface IProps {
   text: string
 }
 
-const NoResults = ({text}: IProps) => {
+const NoResults = ({ text }: IProps) => {
   return (
     <div className='flex flex-col justify-center items-center h-full w-full'>
       <p className='text-8xl text-[rgb(232,232,232)]'>

@@ -13,9 +13,10 @@ import useAuthStore from '../store/authStore'
 import { BASE_URL } from '../utils';
 
 interface IProps {
-    post: Video
+    post: Video,
+    setPosts: any
 }
-const VideoCard: NextPage<IProps> = ({ post }) => {
+const VideoCard: NextPage<IProps> = ({ post, setPosts }) => {
 
     const videoRef = useRef<HTMLVideoElement>(null)
     const { userProfile } :any = useAuthStore()
@@ -23,7 +24,11 @@ const VideoCard: NextPage<IProps> = ({ post }) => {
 
 const handleDelete = async () => {
     await axios.delete(`${BASE_URL}/api/post/delete`, {data: {id: post._id}})
-    router.reload()
+    if(setPosts) {
+        setPosts((prev : any) => prev.filter(
+            (video: Video) => video._id !== post._id
+        ))
+    }
 }
 
 

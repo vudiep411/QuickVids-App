@@ -5,6 +5,7 @@ import Link from 'next/link';
 import {  MdOutlineCancel } from 'react-icons/md';
 import { BASE_URL } from '../../utils';
 import Avatar from '@mui/material/Avatar';
+import useSound from 'use-sound';
 
 import moment from 'moment'
 import axios from 'axios';
@@ -22,6 +23,8 @@ const Detail = ({postDetails} : IProps) => {
   const [post, setPost] = useState(postDetails)
   const [comment, setComment] = useState('')
   const [isPostingComment, setIsPostingComment] = useState(false)
+  const [playComment] = useSound('/sounds/mixkit-retro-game-notification-212.wav')
+  const [playLike] = useSound('/sounds/pop.wav')
 
   const videoRef = useRef<HTMLVideoElement>(null)
   const { userProfile } : any = useAuthStore()
@@ -40,6 +43,7 @@ const Detail = ({postDetails} : IProps) => {
         })
 
         setPost({...post, likes: data.likes})
+        playLike()
       }
     }
  }
@@ -56,6 +60,7 @@ const Detail = ({postDetails} : IProps) => {
       setPost({...post, comments: data.comments})
       setComment('')
       setIsPostingComment(false)
+      playComment()
     }
  }
   return (

@@ -8,7 +8,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const data = await client.patch(postId)
         .unset([`comments[_key=="${key}"]`])
         .commit()
-        console.log(data)
         res.json({data: 'ok'})
     }
 }

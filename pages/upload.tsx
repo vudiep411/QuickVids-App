@@ -68,8 +68,7 @@ const Upload = () => {
             await axios.post(`${BASE_URL}/api/post`, document)
             router.push('/')
         }
-        else
-        {   
+        else {   
             setMissing('Please fill out all fields !')
         }
     }
@@ -143,13 +142,13 @@ const Upload = () => {
                     <p className='text-center text-xl text-red-400 font-semibold mt-4 w-[260px]'>File is invalid!! {file}</p>
                 )}
             </div>
-            { missing && 
-                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
-                    <span className="block sm:inline">{missing}</span>
-                </div>
-            }
             {/* form caption and topics*/}
             <div className='flex flex-col gap-3 pb-10'>
+                { missing && 
+                    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+                        <span className="block sm:inline">{missing}</span>
+                    </div>
+                }
                     <label className='text-md font-medium text-[rgb(232,232,232)]'>Caption</label>
                 <input
                     type='text'

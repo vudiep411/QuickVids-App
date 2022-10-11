@@ -21,7 +21,7 @@ interface IProps {
  
 const Profile = ({ data }: IProps) => {
   const [showUserVideos, setShowUserVideos] = useState<Boolean>(true);
-  const [videosList, setVideosList] = useState<Video[]>([]);  
+  const [videosList, setPosts] = useState<Video[]>([]);  
   const { user, userVideos, userLikedVideos } = data;
 
   const [noOfFollowers, setNoOfFollowers] = useState(user.followers)
@@ -38,9 +38,9 @@ const Profile = ({ data }: IProps) => {
   useEffect(() => {
     const fetchVideos = async () => {
       if (showUserVideos) {
-        setVideosList(userVideos);
+        setPosts(userVideos);
       } else {
-        setVideosList(userLikedVideos);
+        setPosts(userLikedVideos);
       }
       setNoOfFollowers(user.followers)
       setUsername(user.userName)
@@ -138,7 +138,7 @@ const Profile = ({ data }: IProps) => {
       <div className='flex gap-6 flex-wrap md:justify-start'>
           {videosList?.length > 0 ? (
             videosList?.map((post: Video, idx: number) => (
-              <VideoCard key={idx} post={post} />
+              <VideoCard key={idx} post={post} setPosts={setPosts}/>
             ))
           ) : (
             <NoResults
