@@ -10,27 +10,38 @@ import { Container } from '@mui/system';
 
 const Followers = ({ data } : any) => {
   const transition = 'transition ease-in-out delay-400 hover:-translate-y-1 hover:scale-108 over:-translate-x-2'
+  const router = useRouter()
+  const { id } = router.query
+
   return (
     <div className='p-3'>
       <div className='mb-3 flex gap-5'>
-        <Avatar
-              sx={{display: { xs: 'none', md: 'block' }, 
-              height: 100, 
-              width: 100
+        <Link href={`/profile/${id}`}>
+          <div>
+            <Avatar
+                  sx={{display: { xs: 'none', md: 'block' }, 
+                  height: 100, 
+                  width: 100,
+                  cursor: 'pointer'
+                }}
+                  src={data.image}
+            />
+            <Avatar
+              sx={{display: { xs: 'block', md: 'none' }, 
+              height: 75, 
+              width: 75,
+              marginTop: '9px',
+              cursor: 'pointer'
             }}
               src={data.image}
             />
-        <Avatar
-          sx={{display: { xs: 'block', md: 'none' }, 
-          height: 75, 
-          width: 75,
-          marginTop: '9px'
-        }}
-          src={data.image}
-        />
-        <p className='text-md text-2xl font-bold tracking-wider flex gap-2 items-center justify-center lowercase text-[rgb(232,232,232)]'>
-          {data.userName}
-        </p>
+          </div>
+        </Link>
+        <Link href={`/profile/${id}`}>
+          <p className='text-md text-2xl font-bold tracking-wider flex gap-2 items-center justify-center lowercase text-[rgb(232,232,232)] cursor-pointer'>
+            {data.userName}
+          </p>
+        </Link>
       </div>
       <Container maxWidth='md'>        
         <p className='text-lg text-[rgb(232,232,232)] font-bold mb-3'>All followers</p>
