@@ -6,7 +6,7 @@
 
 <br  />
 <div>
-<h3  align="center">QuickVids</h3>
+<h1  align="center">QuickVids</h1>
 <p  align="center">
 
 A social media platform for people to post videos, follows, like and comment using next.js for front-end, node.js for back-end, and sanity for database
