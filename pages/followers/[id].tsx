@@ -12,7 +12,7 @@ const Followers = ({ data } : any) => {
   const transition = 'transition ease-in-out delay-400 hover:-translate-y-1 hover:scale-108 over:-translate-x-2'
   const router = useRouter()
   const { id } = router.query
-
+  console.log(data)
   return (
     <div className='p-3'>
       <div className='mb-3 flex gap-5'>
