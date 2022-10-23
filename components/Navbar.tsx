@@ -99,11 +99,20 @@ const Navbar = () => {
       <div>
         {userProfile ? (
         <div className='flex gap-3 md:gap-10 mt-1'>
-          <Link href='/upload'>
-            <button className='ml-[5px]'>
-              <RiVideoAddFill className={`text-3xl text-white ${transition}`}/>
-            </button>
-          </Link>
+          <div >
+            <Link href='/upload'>
+              <button className={`ml-[5px] text-white bg-blue-400 p-2 rounded-xl hidden md:block ${transition} border-2 border-white`}>
+                  <b>UPLOAD</b>
+              </button>
+            </Link>
+          </div>
+          <div>
+            <Link href='/upload'>
+              <button className={`ml-[5px] text-white bg-blue-400 p-2 rounded-xl md:hidden ${transition}`}>
+                  <RiVideoAddFill/>
+              </button>
+            </Link>
+          </div>
           {/* render profile image */}
           <Dropdown addUser={addUser} createOrGetUser={createOrGetUser} userProfile={userProfile} image={image} logout={logout} router={router}/>
         </div>
