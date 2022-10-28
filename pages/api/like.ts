@@ -5,8 +5,15 @@ import { uuid } from 'uuidv4'
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if(req.method === 'PUT') {
         const { userId, postId, like} = req.body
-
-        const data = like ? await client
+        const likesArray = await client.fetch(`*[_type == "post" && _id == '${postId}'] {
+            likes,
+        }`)
+        let isLike = like
+        for(let i = 0; i < likesArray.length; i++){
+            if(likesArray[i]._ref === userId)
+            isLike = false
+        }
+        const data = isLike ? await client
             .patch(postId)
             .setIfMissing({likes: []})
             .insert('after', 'likes[-1]', [
