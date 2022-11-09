@@ -1,12 +1,8 @@
 
-
-<a  name="readme-top"></a>
-
-  
-
+<a name="readme-top"></a>
 <!-- PROJECT LOGO -->
 
-<br  />
+<br/>
 <div>
 <h1  align="center">QuickVids</h1>
 <p  align="center">
@@ -25,11 +21,7 @@ Frank Salgado Gonzalez - franksalgado@csu.fullerton.edu
 <!-- ABOUT THE PROJECT -->
 
 ## Overview 
-
-  
-  
-
-![hr](https://raw.githubusercontent.com/vudiep411/QuickVids-App/main/quickvids1.png)<br/>
+<br/>
 <img src="/public/images/overview1.png"/><br/>
 <img src="/public/images/overview2.png"/><br/>
 
@@ -65,9 +57,9 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+* [Node.js][Node.js-url]
 
-* npm
+* [npm][npm]
 
 ```sh
 npm install npm@latest -g
@@ -77,43 +69,42 @@ npm install npm@latest -g
 
 1. Clone the repo
 
-```sh
-git clone https://github.com/vudiep411/QuickVids-App.git
-```
+	```sh
+	git clone https://github.com/vudiep411/QuickVids-App.git
+	```
 
 2. Install NPM packages
-```sh
-npm install
-```
+	```sh
+	npm install
+	```
 
 3. Run the React Project
-```sh
-npm run dev
-```
+	```sh
+	npm run dev
+	```
 
 4. Install Sanity
 
-```sh
-cd ./quickvids-backend
-
-npm install -g @sanity/cli
-```
+	```sh
+	cd ./quickvids-backend
+	npm install -g @sanity/cli
+	```
 
 5. Set up Sanity on web browser
-Visit <a  href="https://www.sanity.io/docs/getting-started">Sanity</a> to complete the set up
+visit <a  href="https://www.sanity.io/docs/getting-started">Sanity</a> to complete the set up and get the secret token.
 
-6. Create a *.env* file and place your sanity secret inside. See *.env.example* for reference.
+6. Get <a href="https://console.cloud.google.com/apis/credentials/consent">google secret</a> to activate sign-in with google library
+ 
+7. Create a *.env* file and place your sanity secret and google secret inside. See [.env.example](.env.example) for reference.
 
 <br/>
 <p><b>Note:</b></p>
 
 >⚠ Sign up to get Sanity secret token and place it in a .env file after to start with sanity follow instructions and install all packages needed<br/>
->⚠ Make sure to register environments variables in next.config.json file<br/>
+>⚠ If you are planning to create more evironment variables, make sure to register them in next.config.json file<br/>
 <img src='/public/images/nextconfig.png'/><br/>
 >⚠ The client will be started at http://127.0.0.1:3000/ <br/>
 >⚠ Sanity development server will be started at http://127.0.0.1:3333/ <br/>
-
-
 
 <p  align="right">(<a  href="#readme-top">back to top</a>)</p>
 
@@ -152,3 +143,5 @@ Project Link: [https://github.com/vudiep411/QuickVids-App]
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
+[consent]: https://console.cloud.google.com/apis/credentials/consent
+[npm]: https://www.npmjs.com/
