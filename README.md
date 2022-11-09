@@ -1,3 +1,4 @@
+
 <a  name="readme-top"></a>
 
   
@@ -13,6 +14,9 @@ A social media platform for people to post videos, follows, like and comment usi
 
 <br  />
 
+## Author
+Vu Diep - vudiep411@gmail.com
+Frank Salgado Gonzalez - franksalgado@csu.fullerton.edu
   
   
   
@@ -130,10 +134,7 @@ Project Link: [https://github.com/vudiep411/QuickVids-App]
 <p  align="right">(<a  href="#readme-top">back to top</a>)</p>
 
   
-  
-  
-  
-  
+ 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
