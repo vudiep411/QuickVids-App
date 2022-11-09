@@ -75,19 +75,19 @@ const Dropdown = ({addUser, createOrGetUser, userProfile, image, logout, router}
                 </div>
                 <div className="text-white block text-sm p-2 rounded-md hover:bg-[rgb(80,80,80)]" role="menuitem" >
                     <button onClick={logout} className="block w-full text-sm" role="menuitem">
-                    <p><PowerSettingsNewIcon/>&nbsp; Sign out</p>    
+                        <p><PowerSettingsNewIcon/>&nbsp; Sign out</p>    
                     </button>                              
                 </div>
             </div>
             }
             <Divider/>
             <div className="text-white block text-sm p-2 rounded-md hover:bg-[rgb(80,80,80)]" role="menuitem" >
-                <button className="block w-full text-sm" role="menuitem">
+                <button className="block w-full text-sm" role="menuitem" onClick={() => window.open('https://quickvids-about.vercel.app/about')}>
                     <p><InfoIcon/>&nbsp; About</p>    
                 </button>                              
             </div>
             <div className="text-white block text-sm p-2 rounded-md hover:bg-[rgb(80,80,80)]" role="menuitem" >
-                <button className="block w-full text-sm" role="menuitem">
+                <button className="block w-full text-sm" role="menuitem" onClick={() => window.open('https://quickvids-about.vercel.app/help')}>
                     <p><HelpIcon/>&nbsp; Help</p>    
                 </button>                              
             </div>

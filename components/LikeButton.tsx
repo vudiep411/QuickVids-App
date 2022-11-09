@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react'
-import { MdFavorite } from 'react-icons/md'
 import { NextPage } from 'next';
 import {AiTwotoneFire} from 'react-icons/ai'
 import useAuthStore from '../store/authStore'
+import { BASE_URL } from '../utils'
+import axios from 'axios'
 
 
 interface IProps {
