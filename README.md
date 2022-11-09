@@ -1,4 +1,5 @@
 
+
 <a  name="readme-top"></a>
 
   
@@ -101,11 +102,7 @@ npm install -g @sanity/cli
 5. Set up Sanity on web browser
 Visit <a  href="https://www.sanity.io/docs/getting-started">Sanity</a> to complete the set up
 
-6. Start sanity development on localhost
-```sh 
-cd quickvids-backend
-sanity start
-```
+6. Create a *.env* file and place your sanity secret inside. See *.env.example* for reference.
 
 <br/>
 <p><b>Note:</b></p>
