@@ -15,7 +15,7 @@ A social media platform for people to post videos, follows, like and comment usi
 <br  />
 
 ## Author
-Vu Diep - vudiep411@gmail.com
+Vu Diep - vudiep411@gmail.com <br/>
 Frank Salgado Gonzalez - franksalgado@csu.fullerton.edu
   
   
