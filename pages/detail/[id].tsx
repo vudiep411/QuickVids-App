@@ -33,20 +33,6 @@ const Detail = ({postDetails} : IProps) => {
 
   if(!post) return null 
 
- const handleLike = async (like: boolean) => {
-      if(userProfile) {
-        const { data } = await axios.put(`${BASE_URL}/api/like`, {
-          userId: userProfile._id,
-          postId: post._id,
-          like
-        })
-
-        setPost({...post, likes: data.likes})
-        playLike()
-      }
-
- }
-
  const addComment = async (e : { preventDefault: () => void }) => {
     e.preventDefault()
     if(userProfile && comment) {
@@ -107,8 +93,9 @@ const Detail = ({postDetails} : IProps) => {
               {userProfile && (
                 <LikeButton 
                   likes={post.likes}
-                  handleLike={() => handleLike(true)}
-                  handleDislike={() => handleLike(false)}
+                  setPost={setPost}
+                  post={post}
+                  playLike={playLike}
                 />
               )}
             </div>
