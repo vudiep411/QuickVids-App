@@ -12,14 +12,14 @@ import Dropdown from './Dropdown'
 
 const Navbar = () => {
   const {userProfile, addUser, removeUser} : any = useAuthStore()
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState<string>('');
   const [image, setImage] = useState<any>()
 
   const router = useRouter();
   const transition = 'transition ease-in-out delay-200 hover:-translate-y-1 hover:scale-110'
+
   const handleSearch = (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    
     if(searchValue) {
       router.push(`/search/${searchValue}`);
       setSearchValue('')
@@ -28,8 +28,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      if(userProfile)
-      {
+      if(userProfile) {
         const { data } = await axios.get(`${BASE_URL}/api/user/${userProfile._id}`)
         setImage(data.image)
       }
@@ -93,7 +92,6 @@ const Navbar = () => {
             >
               <BiSearch className='font-bold'/>
             </button>
-
         </form>
       </div>
       <div>

@@ -13,15 +13,15 @@ const nextConfig = {
       'cdn.sanity.io'
     ]
   },
-    webpack(config, options) {
-      config.module.rules.push({
-        test: /\.(ogg|mp3|wav|mpe?g)$/i,
-        use: {
-          loader: 'file-loader',
-        }
-      })
-      return config
-    }  
+  webpack(config, options) {
+    config.module.rules.push({
+      test: /\.(ogg|mp3|wav|mpe?g)$/i,
+      use: {
+        loader: 'file-loader',
+      }
+    })
+    return config
+  }  
 }
 
 module.exports = nextConfig

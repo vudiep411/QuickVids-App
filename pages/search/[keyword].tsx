@@ -20,7 +20,11 @@ const Search = ({ videos } : {videos: Video[]}) => {
     const { keyword }: any = router.query;
     const accounts = isAccounts ? 'border-b-2 border-white text-white' : 'text-gray-400';
     const isVideos = !isAccounts ? 'border-b-2 border-white text-white' : 'text-gray-400';
-    const searchedAccounts = allUsers?.filter((user: IUser) =>  user.userName.toLowerCase().replace(/\s/g, '').includes(keyword.toLowerCase()));
+    const searchedAccounts = allUsers?.filter((user: IUser) =>  user.userName
+                              .toLowerCase()
+                              .replace(/\s/g, '')
+                              .includes(keyword.toLowerCase()));
+
   return (
     <div className='w-full'>
       <div className='flex gap-10 mb-10 w-full'>

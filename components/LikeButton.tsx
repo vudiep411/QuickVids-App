@@ -16,11 +16,10 @@ interface IProps {
 const LikeButton: NextPage<IProps> = ({ likes, setPost, post, playLike}) => {
   const [liked, setLiked] = useState(false)
   const { userProfile } : any = useAuthStore()
-  const filterLikes = 
-    likes
+
+  const filterLikes = likes
     ?.filter((item : any) => item._ref === userProfile?._id)
     ?.map((item: any) => item._ref)
-  
   const likesArray = likes?.map((item: any) => item._ref)
   const likeSet = new Set(likesArray)
 
@@ -35,8 +34,7 @@ const LikeButton: NextPage<IProps> = ({ likes, setPost, post, playLike}) => {
       setPost({...post, likes: data.likes})
       playLike()
     }
-
-}
+  }
 
   useEffect(() => {
     if(filterLikes?.length > 0)

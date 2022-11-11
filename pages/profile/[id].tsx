@@ -72,17 +72,17 @@ const Profile = ({ data }: IProps) => {
   const FollowButton = () => {
     return !noOfFollowers?.find((item: any) => item._ref === userProfile._id) ?
     (
-    <button
-      onClick={handleFollow} 
-      className="mt-2 w-[100px] bg-blue-500 text-[rgb(232,232,232)] font-bold text-xs px-4 py-2 rounded shadow-lg hover:shadow-md outline-none focus:outline-none mr-1 mb-1" type="button">
-      Follow
-    </button>
+      <button
+        onClick={handleFollow} 
+        className="mt-2 w-[100px] bg-blue-500 text-[rgb(232,232,232)] font-bold text-xs px-4 py-2 rounded shadow-lg hover:shadow-md outline-none focus:outline-none mr-1 mb-1" type="button">
+        Follow
+      </button>
     ) : ( 
       <button
-      onClick={handleFollow} 
-      className="mt-2 w-[100px] bg-[rgb(64,64,64)] hover:bg-[rgb(72,72,72)] text-[rgb(232,232,232)] font-bold text-xs border-1 border-black px-4 py-2 rounded shadow-lg hover:shadow-md mr-1 mb-1" type="button">
-      Unfollow
-    </button>      
+        onClick={handleFollow} 
+        className="mt-2 w-[100px] bg-[rgb(64,64,64)] hover:bg-[rgb(72,72,72)] text-[rgb(232,232,232)] font-bold text-xs border-1 border-black px-4 py-2 rounded shadow-lg hover:shadow-md mr-1 mb-1" type="button">
+        Unfollow
+      </button>      
     )
   }
 

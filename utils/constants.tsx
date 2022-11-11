@@ -40,3 +40,4 @@ export const topics = [
 export const footerList1 = ['About', 'Newsroom', 'Store', 'Contact', 'Careers', 'Creator Directory']
 export const footerList2 = [ 'Advertise','Developers','QuickVids Rewards' ]
 export const footerList3 = [ 'Help', 'Safety', 'Terms', 'Privacy', 'Creator Portal', 'Community Guidelines' ]
+export const aboutURL = "https://quickvids-about.vercel.app/"

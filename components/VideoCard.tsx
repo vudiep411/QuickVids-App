@@ -7,7 +7,6 @@ import Popup from './Popup';
 import { Avatar } from '@mui/material';
 
 import axios from 'axios';
-import { useRouter } from 'next/router';
 import { Video } from '../type';
 import useAuthStore from '../store/authStore'
 import { BASE_URL } from '../utils';
@@ -19,18 +18,16 @@ interface IProps {
 const VideoCard: NextPage<IProps> = ({ post, setPosts }) => {
 
     const videoRef = useRef<HTMLVideoElement>(null)
-    const { userProfile } :any = useAuthStore()
-    const router = useRouter()
+    const { userProfile } : any = useAuthStore()
 
-const handleDelete = async () => {
-    await axios.delete(`${BASE_URL}/api/post/delete`, {data: {id: post._id}})
-    if(setPosts) {
-        setPosts((prev : any) => prev.filter(
-            (video: Video) => video._id !== post._id
-        ))
+    const handleDelete = async () => {
+        await axios.delete(`${BASE_URL}/api/post/delete`, {data: {id: post._id}})
+        if(setPosts) {
+            setPosts((prev : any) => prev.filter(
+                (video: Video) => video._id !== post._id
+            ))
+        }
     }
-}
-
 
   return (
     <div className='flex flex-col pb-6 mr-2'>

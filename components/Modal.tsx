@@ -6,46 +6,43 @@ import { client } from '../utils/client';
 import Avatar from '@mui/material/Avatar';
 
 const Modal = ({name, username, setName, setUsername, image, setImage, id} : any) => {
-    const [showModal, setShowModal] = useState(false);
-    const [newName, setNewName] = useState(name)
-    const [newUsername, setNewUsername] = useState(username)
-    const [newImg, setNewImg] = useState<any>(image)
-
-    useEffect(() => {
-      setNewName(name)
-      setNewUsername(username)
-      setNewImg(image)
-    }, [name, username, image])
+  const [showModal, setShowModal] = useState(false);
+  const [newName, setNewName] = useState(name)
+  const [newUsername, setNewUsername] = useState(username)
+  const [newImg, setNewImg] = useState<any>(image)
+  useEffect(() => {
+    setNewName(name)
+    setNewUsername(username)
+    setNewImg(image)
+  }, [name, username, image])
+  
+  const handleUploadImage = async (e : any) => {
+    const selectedFile = e.target.files[0]
+    client.assets.upload('image', selectedFile, {
+      contentType: selectedFile.type,
+      filename: selectedFile.name
+    }).then((data) => {
+      setNewImg(data.url)
+    })
+  }
+  const handleSubmit = () => {
+    setShowModal(false)
+    setName(newName)
+    setUsername(newUsername)
+    setImage(newImg)
     
-    const handleUploadImage = async (e : any) => {
-      const selectedFile = e.target.files[0]
-      client.assets.upload('image', selectedFile, {
-        contentType: selectedFile.type,
-        filename: selectedFile.name
-      }).then((data) => {
-        setNewImg(data.url)
-      })
-
-    }
-
-    const handleSubmit = () => {
-      setShowModal(false)
-      setName(newName)
-      setUsername(newUsername)
-      setImage(newImg)
-      
-      axios.put(`${BASE_URL}/api/users`, {
-        id: id,
-        username: newUsername,
-        name: newName,
-        image: newImg
-      })
-    }
-
-    const handleClose = () => {
-      setShowModal(false)
-      setNewImg(image)
-    }
+    axios.put(`${BASE_URL}/api/users`, {
+      id: id,
+      username: newUsername,
+      name: newName,
+      image: newImg
+    })
+  }
+  const handleClose = () => {
+    setShowModal(false)
+    setNewImg(image)
+  }
+  
   return (
   <>
     <p

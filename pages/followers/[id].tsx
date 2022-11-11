@@ -12,19 +12,19 @@ const Followers = ({ data } : any) => {
   const transition = 'transition ease-in-out delay-400 hover:-translate-y-1 hover:scale-108 over:-translate-x-2'
   const router = useRouter()
   const { id } = router.query
-  console.log(data)
+
   return (
     <div className='p-3'>
       <div className='mb-3 flex gap-5'>
         <Link href={`/profile/${id}`}>
           <div>
             <Avatar
-                  sx={{display: { xs: 'none', md: 'block' }, 
-                  height: 100, 
-                  width: 100,
-                  cursor: 'pointer'
-                }}
-                  src={data.image}
+              sx={{display: { xs: 'none', md: 'block' }, 
+              height: 100, 
+              width: 100,
+              cursor: 'pointer'
+            }}
+              src={data.image}
             />
             <Avatar
               sx={{display: { xs: 'block', md: 'none' }, 
@@ -45,9 +45,9 @@ const Followers = ({ data } : any) => {
       </div>
       <Container maxWidth='md'>        
         <p className='text-lg text-[rgb(232,232,232)] font-bold mb-3'>All followers</p>
-        {data?.data.map((user : IUser) => 
+        { data?.data.map((user : IUser) => 
           <Link key={user._id} href={`/profile/${user._id}`}>
-            <div className={`flex gap-3 p-2 cursor-pointer font-semibold rounded hover:${transition}`}>
+            <div className={`flex gap-3 p-2 cursor-pointer font-semibold rounded hover:${transition} mb-1`}>
               <div>
                 <Avatar
                   sx={{width: 50, height: 50}}

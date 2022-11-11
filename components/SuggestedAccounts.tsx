@@ -10,10 +10,9 @@ import useAuthStore from '../store/authStore';
 
 const SuggestedAccounts: NextPage = () => {
   const { fetchAllUsers, allUsers } = useAuthStore()
-  
+
   useEffect(() => {
     fetchAllUsers();
-
   }, [fetchAllUsers])
 
 
