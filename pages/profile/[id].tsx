@@ -24,17 +24,21 @@ const Profile = ({ data }: IProps) => {
   const [videosList, setPosts] = useState<Video[]>([]);  
   const { user, userVideos, userLikedVideos } = data;
 
-  const [noOfFollowers, setNoOfFollowers] = useState(user.followers)
   const [name, setName] = useState(user.name)
   const [username, setUsername] = useState(user.userName)
   const [image, setImage] = useState(user.image)
-
+  
+  
   const videos = showUserVideos ? 'border-b-2 border-white text-white' : 'text-gray-500';
   const liked = !showUserVideos ? 'border-b-2 border-white text-white':  'text-gray-500';
   const router = useRouter()
   const { userProfile } : {userProfile: any}= useAuthStore()
   const { id } : any = router.query
   
+  const [noOfFollowers, setNoOfFollowers] = useState(user.followers.map((item: any) => item._ref))
+  const followerSet = new Set(noOfFollowers)
+  const [isFollowed, setIsFollowed] = useState(noOfFollowers?.includes(userProfile?._id))
+
   useEffect(() => {
     const fetchVideos = async () => {
       if (showUserVideos) {
@@ -42,7 +46,8 @@ const Profile = ({ data }: IProps) => {
       } else {
         setPosts(userLikedVideos);
       }
-      setNoOfFollowers(user.followers)
+      setNoOfFollowers(user.followers.map((item: any) => item._ref))
+      setIsFollowed(noOfFollowers?.includes(userProfile?._id))
       setUsername(user.userName)
       setName(user.name)
       setImage(user.image)
@@ -51,35 +56,36 @@ const Profile = ({ data }: IProps) => {
   }, [showUserVideos, userLikedVideos, userVideos, user, id]);
   
   // handle when click follow
-  const handleFollow = async () => {
-    const check = noOfFollowers?.find((item: any) => item._ref === userProfile._id)
-    let follow = true
-    if(check)
-        follow = false
-
-    if(userProfile)
-    {
-      const { data } = await axios.put(`${BASE_URL}/api/followers`, {
+  const handleFollow = async (follow: boolean) => {
+    if(userProfile) {
+      if(noOfFollowers.includes(userProfile._id)) {
+        setNoOfFollowers((prev: any) => prev.filter((item: any) => item !== userProfile._id))
+        setIsFollowed(false)
+      } else {
+        setNoOfFollowers((prev : any) => [...prev, userProfile._id])
+        setIsFollowed(true)
+      }
+      await axios.put(`${BASE_URL}/api/followers`, {
           userId: userProfile._id,
           followingID: id,          
           follow: follow
       })
-      setNoOfFollowers(data.followers)
+
     }
   }
 
   // render follow button
   const FollowButton = () => {
-    return !noOfFollowers?.find((item: any) => item._ref === userProfile._id) ?
+    return !isFollowed ?
     (
       <button
-        onClick={handleFollow} 
+        onClick={() => handleFollow(true)} 
         className="mt-2 w-[100px] bg-blue-500 text-[rgb(232,232,232)] font-bold text-xs px-4 py-2 rounded shadow-lg hover:shadow-md outline-none focus:outline-none mr-1 mb-1" type="button">
         Follow
       </button>
     ) : ( 
       <button
-        onClick={handleFollow} 
+        onClick={() => handleFollow(false)} 
         className="mt-2 w-[100px] bg-[rgb(64,64,64)] hover:bg-[rgb(72,72,72)] text-[rgb(232,232,232)] font-bold text-xs border-1 border-black px-4 py-2 rounded shadow-lg hover:shadow-md mr-1 mb-1" type="button">
         Unfollow
       </button>      
@@ -115,7 +121,7 @@ const Profile = ({ data }: IProps) => {
           <p className='mt-3 text-[rgb(232,232,232)] cursor-pointer hover:text-gray-500'
               onClick={() => router.push(`/followers/${id}`)}
           ><b>
-            {noOfFollowers?.length || 0}
+            {followerSet?.size || 0}
             </b> Followers</p>
           { (userProfile?._id !== id && userProfile) &&
             <FollowButton/>

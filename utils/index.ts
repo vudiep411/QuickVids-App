@@ -11,7 +11,8 @@ export const createOrGetUser = async (response: any, addUser: any) => {
         _type: 'user',
         userName: name,
         name: name,
-        image: picture
+        image: picture,
+        followers: []
     }
 
     addUser(user)

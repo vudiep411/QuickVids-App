@@ -7,7 +7,7 @@ const Footer: NextPage = () => {
     const List = ({ items, mt }: { items: string[], mt: Boolean }) => (
         <div className={`flex flex-wrap gap-2 ${mt && 'mt-5'}`}>
           {items.map((item: string) => (
-            <div onClick={() => window.open(aboutURL)}>
+            <div onClick={() => window.open(aboutURL)} key={item}>
               <p key={item} className='text-gray-400 text-sm hover:underline cursor-pointer' >
                 {item}
               </p>

@@ -19,6 +19,8 @@ const VideoCard: NextPage<IProps> = ({ post, setPosts }) => {
 
     const videoRef = useRef<HTMLVideoElement>(null)
     const { userProfile } : any = useAuthStore()
+    const likes = post?.likes?.map((item: any) => item._ref)
+    const set = new Set(likes)
 
     const handleDelete = async () => {
         await axios.delete(`${BASE_URL}/api/post/delete`, {data: {id: post._id}})
@@ -91,7 +93,7 @@ const VideoCard: NextPage<IProps> = ({ post, setPosts }) => {
                     className='w-[300px] h-[400px] md:h-[400px] md:w-[500px] lg:w-[600px] lg:h-[528px] rounded-2xl cursor-pointer bg-black'
                 />
                 <div className='flex gap-5 mt-2'>
-                    <a href={`/detail/${post._id}`} className='text-[rgb(232,232,232)] cursor-pointer hover:text-slate-400'><b>{post?.likes?.length || 0}</b> Likes</a>
+                    <a href={`/detail/${post._id}`} className='text-[rgb(232,232,232)] cursor-pointer hover:text-slate-400'><b>{set?.size || 0}</b> Likes</a>
                     <a href={`/detail/${post._id}`} className='text-[rgb(232,232,232)] cursor-pointer hover:text-slate-400'><b>{post?.comments?.length || 0}</b> Comments</a>
                 </div>
             </div>

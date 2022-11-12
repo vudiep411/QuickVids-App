@@ -14,35 +14,30 @@ interface IProps {
 }
 
 const LikeButton: NextPage<IProps> = ({ likes, setPost, post, playLike}) => {
-  const [liked, setLiked] = useState(false)
   const { userProfile } : any = useAuthStore()
-
-  const filterLikes = likes
-    ?.filter((item : any) => item._ref === userProfile?._id)
-    ?.map((item: any) => item._ref)
-  const likesArray = likes?.map((item: any) => item._ref)
+  
+  const [likesArray, setLikeArray] = useState(likes?.map((item: any) => item._ref))
+  const [liked, setLiked] = useState(likesArray?.includes(userProfile?._id))
   const likeSet = new Set(likesArray)
 
   const handleLike = async (like: boolean) => {
     if(userProfile) {
-      const { data } = await axios.put(`${BASE_URL}/api/like`, {
+      if(likesArray?.includes(userProfile?._id)) {
+        setLikeArray((prev : any) => prev.filter((item : any) => item !== userProfile?._id))
+        setLiked(false)
+      } else {
+        setLikeArray((prev : any) => [...prev, userProfile?._id])
+        setLiked(true)
+      }
+      playLike()
+      await axios.put(`${BASE_URL}/api/like`, {
         userId: userProfile._id,
         postId: post._id,
         like
       })
 
-      setPost({...post, likes: data.likes})
-      playLike()
     }
   }
-
-  useEffect(() => {
-    if(filterLikes?.length > 0)
-      setLiked(true)
-    else
-      setLiked(false)
-
-  }, [likes, filterLikes])
 
   return (
     <div className='flex gap-6'>

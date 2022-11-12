@@ -63,6 +63,7 @@ const Upload = () => {
                     _type: 'postedBy',
                     _ref: userProfile?._id
                 },
+                likes: [],
                 topic: topic
             }
             await axios.post(`${BASE_URL}/api/post`, document)
