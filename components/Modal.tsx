@@ -10,6 +10,7 @@ const Modal = ({name, username, setName, setUsername, image, setImage, id} : any
   const [newName, setNewName] = useState(name)
   const [newUsername, setNewUsername] = useState(username)
   const [newImg, setNewImg] = useState<any>(image)
+  
   useEffect(() => {
     setNewName(name)
     setNewUsername(username)

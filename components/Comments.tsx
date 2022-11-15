@@ -28,7 +28,11 @@ interface IComment {
   postedBy: { _ref?: string; _id?: string };
 }
 
-const Comments = ({ comment, setComment, addComment, comments, isPostingComment, postId, setPost, post } : IProps) => {
+const Comments = ({ comment, setComment, addComment, 
+                    comments, isPostingComment, postId, 
+                    setPost, post } : IProps
+                  ) => {
+                    
   const { userProfile, allUsers } : any = useAuthStore()
 
   const deleteComment = async (key : any) => {

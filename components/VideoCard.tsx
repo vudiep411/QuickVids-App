@@ -23,7 +23,8 @@ const VideoCard: NextPage<IProps> = ({ post, setPosts }) => {
     const set = new Set(likes)
 
     const handleDelete = async () => {
-        await axios.delete(`${BASE_URL}/api/post/delete`, {data: {id: post._id}})
+        await axios.delete(`${BASE_URL}/api/post/delete`, 
+                            {data: {id: post._id}})
         if(setPosts) {
             setPosts((prev : any) => prev.filter(
                 (video: Video) => video._id !== post._id

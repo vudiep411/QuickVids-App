@@ -10,9 +10,9 @@ const NoResults = ({ text }: IProps) => {
   return (
     <div className='flex flex-col justify-center items-center h-full w-full'>
       <p className='text-8xl text-[rgb(232,232,232)]'>
-        {text === 'No Comments Yet.' ? 
-        (<BiCommentX/>) : 
-        (<MdOutlineVideocamOff/>)}
+        { text === 'No Comments Yet.' ? 
+          (<BiCommentX/>) : (<MdOutlineVideocamOff/>)
+        }
       </p>
       <p className='text-2xl text-center text-[rgb(80,80,80)]'>{text}</p>
     </div>

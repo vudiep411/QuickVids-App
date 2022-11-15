@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState } from 'react'
 import { NextPage } from 'next';
-import {AiTwotoneFire} from 'react-icons/ai'
+import { AiTwotoneFire } from 'react-icons/ai'
 import useAuthStore from '../store/authStore'
 import { BASE_URL } from '../utils'
 import axios from 'axios'
@@ -23,7 +23,10 @@ const LikeButton: NextPage<IProps> = ({ likes, setPost, post, playLike}) => {
   const handleLike = async (like: boolean) => {
     if(userProfile) {
       if(likesArray?.includes(userProfile?._id)) {
-        setLikeArray((prev : any) => prev.filter((item : any) => item !== userProfile?._id))
+        setLikeArray((prev : any) => 
+        prev.filter(
+          (item : any) => item !== userProfile?._id
+        ))
         setLiked(false)
       } else {
         setLikeArray((prev : any) => [...prev, userProfile?._id])
