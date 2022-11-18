@@ -69,6 +69,7 @@ const Navbar = () => {
           <button
             onClick={handleSearch}
             className='absolute md:right-5 right-6 top-4 border-l-2 border-gray-300 pl-4 text-2xl text-gray-400'
+            data-testid="search"
           >
             <BiSearch className={`${transition}`}/>
           </button>

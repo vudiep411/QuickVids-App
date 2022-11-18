@@ -45,7 +45,7 @@ const Comments = ({ comment, setComment, addComment,
 
 
   return (
-    <div className='border-t-2 border-gray-600 pt-4 px-10 mt-4 border-b-2 lg:pb-0 pb-[100px] bg-[rgb(32,32,32)]'>
+    <div className='border-t-2 border-gray-600 pt-4 px-10 mt-4 border-b-2 lg:pb-0 pb-[100px] bg-[rgb(32,32,32)]' data-testid="comments">
       <div className='lg:h-[457px] lg:overflow-scroll'>
         {comments?.length > 0 ? (
           comments?.map((item: IComment, idx: number) => (
