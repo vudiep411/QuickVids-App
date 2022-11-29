@@ -47,6 +47,9 @@ Frank Salgado Gonzalez - franksalgado@csu.fullerton.edu
 
 <img src='/public/images/dbquickvids.png'/>
 
+## Deployment
+This application is deployed on [Vercel][vercel-url] <br/>
+
 <!-- GETTING STARTED -->
 
 ## Getting Started
@@ -128,6 +131,7 @@ Project Link: [https://github.com/vudiep411/QuickVids-App]
 
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
+[vercel-url]: https://vercel.com
 [contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
 [contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
 [Sanity]: https://img.shields.io/badge/Sanity-red?style=for-the-badge&logo=stripe&logoColor=white
