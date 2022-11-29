@@ -50,6 +50,10 @@ Frank Salgado Gonzalez - franksalgado@csu.fullerton.edu
 ## Deployment
 This application is deployed on [Vercel][vercel-url] <br/>
 
+## Future Scaling
+If scaling is required, I would migrate the database (since sanity service is expensive) and create a load balancer.
+<img src='/public/images/lb.png'/>
+
 <!-- GETTING STARTED -->
 
 ## Getting Started
